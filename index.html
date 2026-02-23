@@ -1,4 +1,4 @@
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,11 @@
             width: 18px;
             height: 18px;
             stroke-width: 2.5px;
+        }
+        /* Ajuste para iconos grandes decorativos */
+        .lucide-lg {
+            width: 80px;
+            height: 80px;
         }
     </style>
 </head>
@@ -47,40 +52,59 @@
                 { id: 4, name: 'Estrato 4', color: 'bg-red-100 text-red-800 border-red-300', description: 'Transmisión Local', detail: 'Focos activos y residuales con casos autóctonos recientes.' }
             ];
 
+            const healthUnits = {
+                estrato3: [
+                    { id: "NLSSA000592", name: "Centro de Salud Cadereyta" },
+                    { id: "NLSSA000715", name: "C.S.U. Gerónimo Treviño" },
+                    { id: "NLSSA000580", name: "C.S.U. Lázaro Cárdenas" }
+                ],
+                estrato2: [
+                    { id: "NLSSA000575", name: "C.S.U. Carlos Salinas de Gortari" },
+                    { id: "NLSSA000616", name: "C.S.R. Ejido Barranquito" },
+                    { id: "NLSSA000621", name: "C.S.R. Ejido Palmitos" },
+                    { id: "NLSSA000662", name: "C.S.R. Estación San Juan" }
+                ]
+            };
+
+            const trainings = [
+                { title: "Atención Integral del Paciente con Enfermedades Transmitidas por Vector" },
+                { title: "Capacitación Integral de Paludismo en Nuevo León" },
+                { title: "Tutorial: Llenado de Formato N1 de Paludismo" }
+            ];
+
             const epidemiologyActions = [
                 { action: "Capacitación", activity: "Capacitación integral del personal de salud", s1: "Dos al año", s2: "Dos al año", s3: "Dos al año / Cambio personal", s4: "Dos al año / Cambio personal" },
                 { action: "Supervisión", activity: "Supervisión integral del personal de salud", s1: "Anual", s2: "Anual", s3: "Anual", s4: "Dos al año" },
-                { action: "Detección", activity: "Detección Pasiva (Vigilancia permanente)", s1: "Permanente", s2: "Permanente", s3: "Permanente", s4: "Permanente" },
-                { action: "Detección", activity: "Detección Activa (Movilidad/Remotas)", s1: "Permanente", s2: "Permanente", s3: "Zonas transmisión", s4: "Áreas remotas/asintomáticos" },
+                { action: "Detección", activity: "Detección Pasiva (Permanente)", s1: "Permanente", s2: "Permanente", s3: "Permanente", s4: "Permanente" },
+                { action: "Detección", activity: "Detección Activa (Movilidad/Remotas)", s1: "Permanente", s2: "Permanente", s3: "Zonas transmisión", s4: "Remotas/asintomáticos" },
+                { action: "Detección", activity: "Detección Reactiva (Tras confirmar caso)", s1: "Inmediata", s2: "Inmediata", s3: "Inmediata", s4: "Inmediata" },
                 { action: "Diagnóstico", activity: "Toma y envío de muestras (< 24h)", s1: "Inmediata", s2: "Inmediata", s3: "Inmediata", s4: "Inmediata" },
                 { action: "Monitoreo", activity: "Captura y validación en Plataforma ETV's", s1: "Inmediata", s2: "Inmediata", s3: "Inmediata", s4: "Inmediata" },
-                { action: "Investigación", activity: "Investigación y Clasificación de casos", s1: "Primeras 48h", s2: "Primeras 48h", s3: "Primeras 48h", s4: "Primeras 48h" },
-                { action: "Coordinación", activity: "Análisis en comités de vigilancia (CEVE)", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Mensual" }
+                { action: "Investigación", activity: "Investigación y Clasificación de casos", s1: "Primeras 48h", s2: "Primeras 48h", s3: "Primeras 48h", s4: "Primeras 48h" }
             ];
 
             const vectorActions = [
-                { category: "Tratamiento", activity: "Disponibilidad de medicamentos específicos", s1: "Cabeceras", s2: "Cabeceras", s3: "Niveles locales", s4: "Niveles locales" },
-                { category: "Tratamiento", activity: "Tratamiento oportuno post-Gota Gruesa", s1: "< 24 horas", s2: "< 24 horas", s3: "< 24 horas", s4: "< 24 horas" },
+                { category: "Tratamiento", activity: "Disponibilidad de medicamentos específicos", s1: "Cabeceras", s2: "Cabeceras", s3: "Locales", s4: "Locales" },
                 { category: "Detección", activity: "Búsqueda Activa (Focos Activos/Residuales)", s1: "No aplica", s2: "No aplica", s3: "Loc. Centinelas", s4: "2 visitas mes / Mensual" },
-                { category: "Acciones Vector", activity: "Distribución de PTILD (Mosquiteros)", s1: "No aplica", s2: "Reactiva (Riesgo)", s3: "Reactiva (Riesgo)", s4: "Cobertura 100%" },
+                { category: "Acciones Vector", activity: "Distribución de PTILD (Pabellones)", s1: "No aplica", s2: "Reactiva (Riesgo)", s3: "Reactiva (Riesgo)", s4: "100% población" },
                 { category: "Acciones Vector", activity: "Rociado Residual Intradomiciliario (RRI)", s1: "No aplica", s2: "Reactiva (Riesgo)", s3: "Reactiva (Riesgo)", s4: "100% trimestral" },
                 { category: "EMHCA's", activity: "Eliminación y Modificación de Hábitats", s1: "No aplica", s2: "No aplica", s3: "Riesgo reintro.", s4: "Mensual" },
                 { category: "Vigilancia", activity: "Estudios Hidroentomológicos / Larvicidas", s1: "No aplica", s2: "No aplica", s3: "Trimestral", s4: "Previo/Post acciones" }
             ];
 
             const promotionActions = [
-                { line: "Capacitación", activity: "Capacitar a personal de promoción en prevención de paludismo. Anual", s1: "Anual", s2: "Anual", s3: "Anual", s4: "Anual" },
-                { line: "Educación", activity: "Consejerías a población sobre signos, síntomas y medidas. Mensual", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
-                { line: "Comunicación", activity: "Elaboración de materiales educativos sobre paludismo. Trimestral", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Trimestral" },
-                { line: "Comunicación", activity: "Difusión de material digital en redes de apoyo. Trimestral", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Trimestral" },
-                { line: "Supervisión", activity: "Supervisión de actividades de promoción establecidas. Mensual", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
-                { line: "Evidencia", activity: "Envío de evidencia e informe electrónico. Mensual", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
-                { line: "Comités", activity: "Capacitación a comités locales y plan de trabajo. Anual", s1: "No aplica", s2: "No aplica", s3: "Anual", s4: "Anual" },
-                { line: "Comités", activity: "Seguimiento de plan de trabajo de comités locales. Mensual", s1: "No aplica", s2: "No aplica", s3: "Mensual", s4: "Mensual" },
-                { line: "Educación", activity: "Sesiones educativas a la población sobre prevención. Mensual", s1: "No aplica", s2: "No aplica", s3: "Mensual", s4: "Mensual" }
+                { line: "Capacitación", activity: "Capacitar a personal de promoción a la salud en actividades de prevención de paludismo.", s1: "✓", s2: "✓", s3: "✓", s4: "✓" },
+                { line: "Educación", activity: "Consejerías a la población sobre signos, síntomas y medidas de prevención de paludismo.", s1: "✓", s2: "✓", s3: "✓", s4: "✓" },
+                { line: "Comunicación", activity: "Elaboración de materiales de comunicación educativa con información sobre paludismo.", s1: "✓", s2: "✓", s3: "✓", s4: "✓" },
+                { line: "Comunicación", activity: "Difusión de material digital en las redes de apoyo de Promoción a la Salud.", s1: "✓", s2: "✓", s3: "✓", s4: "✓" },
+                { line: "Supervisión", activity: "Supervisión de las actividades de promoción de la salud establecidas en el plan. ", s1: "✓", s2: "✓", s3: "✓", s4: "✓" },
+                { line: "Evidencia", activity: "Envío de evidencia de las actividades de promoción e informe electrónico. ", s1: "✓", s2: "✓", s3: "✓", s4: "✓" },
+                { line: "Comités", activity: "Capacitación al personal de comités locales de salud, diagnóstico y plan. ", s1: "-", s2: "-", s3: "✓", s4: "✓" },
+                { line: "Comités", activity: "Seguimiento de plan de trabajo de los comités locales.", s1: "-", s2: "-", s3: "✓", s4: "✓" },
+                { line: "Educación", activity: "Sesiones educativas a la población sobre signos, síntomas y medidas. ", s1: "-", s2: "-", s3: "✓", s4: "✓" }
             ];
 
-            const countries = ['Bolivia', 'Brasil', 'Colombia', 'Costa Rica', 'Ecuador', 'Guatemala', 'Guyana', 'Haití', 'Honduras', 'Nicaragua', 'Panamá', 'Perú', 'Rep. Dominicana', 'Surinam', 'Venezuela'];
+            const countries = ['Bolivia', 'Brasil', 'Colombia', 'Costa Rica', 'Ecuador', 'Guatemala', 'Guyana', 'Haití', 'Honduras', 'Nicaragua', 'Panamá', 'Perú', 'Republica Dominicana', 'Surinam', 'Venezuela'];
             const mexicanStates = ['Chiapas', 'Oaxaca', 'Tabasco', 'Campeche', 'Chihuahua'];
 
             return (
@@ -98,27 +122,33 @@
 
                     <main className="max-w-7xl mx-auto pb-12">
                         <nav className="flex space-x-2 bg-slate-200 p-1.5 rounded-2xl mb-8 overflow-x-auto no-scrollbar">
-                            <button onClick={() => setActiveTab('definiciones')} className={`flex-1 min-w-[160px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'definiciones' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                            <button onClick={() => setActiveTab('definiciones')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'definiciones' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
                                 <i data-lucide="info" className="mr-2"></i> Definiciones
                             </button>
-                            <button onClick={() => setActiveTab('estratos')} className={`flex-1 min-w-[160px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'estratos' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                            <button onClick={() => setActiveTab('estratos')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'estratos' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
                                 <i data-lucide="map" className="mr-2"></i> Estratos
                             </button>
-                            <button onClick={() => setActiveTab('acciones')} className={`flex-1 min-w-[160px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'acciones' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                            <button onClick={() => setActiveTab('unidades')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'unidades' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                                <i data-lucide="hospital" className="mr-2"></i> Unidades
+                            </button>
+                            <button onClick={() => setActiveTab('acciones')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'acciones' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
                                 <i data-lucide="clipboard-list" className="mr-2"></i> Líneas de Acción
+                            </button>
+                            <button onClick={() => setActiveTab('tratamiento')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'tratamiento' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                                <i data-lucide="heart" className="mr-2"></i> Tratamiento
                             </button>
                         </nav>
 
                         {activeTab === 'definiciones' && (
-                            <div className="space-y-6">
+                            <div className="space-y-6 animate-in fade-in duration-500">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div className="bg-white p-8 rounded-3xl border-2 shadow-sm col-span-2">
                                         <div className="flex items-center space-x-3 mb-6 text-red-600">
                                             <i data-lucide="alert-circle" className="w-6 h-6"></i>
-                                            <h2 className="text-2xl font-black uppercase italic">Caso Probable</h2>
+                                            <h2 className="text-2xl font-black uppercase italic tracking-tighter">Caso Probable</h2>
                                         </div>
                                         <p className="text-slate-700 text-lg leading-relaxed mb-8">
-                                            Toda persona que <span className="bg-red-50 px-1 font-bold text-red-600 border-b-2 border-red-200">resida o provenga</span> de un área con antecedente de transmisión de <span className="font-black text-red-600 uppercase tracking-tighter">Paludismo</span> (últimos 3 años) y presente <span className="font-black text-red-600 uppercase">Fiebre</span> más signos y síntomas:
+                                            Toda persona que <span className="bg-red-50 px-1 font-bold text-red-600 border-b-2 border-red-200">resida o provenga</span> de un área con antecedente de transmisión de <span className="font-black text-red-600 uppercase">Paludismo</span> (últimos 3 años) y presente <span className="font-black text-red-600 uppercase">Fiebre</span> más signos y síntomas:
                                         </p>
                                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                                             {[
@@ -136,14 +166,14 @@
                                     </div>
                                     <div className="bg-slate-900 p-8 rounded-3xl shadow-xl text-white flex flex-col justify-between">
                                         <div>
-                                            <i data-lucide="microscope" className="text-orange-400 mb-4"></i>
+                                            <i data-lucide="microscope" className="text-orange-400 mb-4 w-8 h-8"></i>
                                             <div className="bg-white/5 p-6 rounded-2xl mb-6 border border-white/10 text-center">
-                                                <h3 className="text-2xl font-black text-orange-400 leading-none uppercase mb-1">GOTA GRUESA</h3>
-                                                <p className="text-slate-400 text-[10px] font-bold tracking-widest uppercase italic">Estándar de Oro</p>
+                                                <h3 className="text-2xl font-black text-orange-400 leading-none uppercase mb-1 tracking-tighter">GOTA GRUESA</h3>
+                                                <p className="text-slate-400 text-[10px] font-bold tracking-widest uppercase italic border-t border-white/10 pt-1">Estándar de Oro</p>
                                             </div>
                                         </div>
-                                        <p className="text-sm text-slate-300">
-                                            <span className="font-black text-orange-400 uppercase tracking-tighter">Caso Confirmado:</span> Identificación de <span className="italic text-white">Plasmodium</span> mediante microscopía o pruebas moleculares.
+                                        <p className="text-sm text-slate-300 leading-tight">
+                                            <span className="font-black text-orange-400 uppercase tracking-tighter block mb-1">Caso Confirmado:</span> Identificación de <span className="italic text-white">Plasmodium</span> mediante microscopía o pruebas moleculares.
                                         </p>
                                     </div>
                                 </div>
@@ -163,6 +193,121 @@
                                                 <div key={i} className="flex items-center text-xs font-black text-red-700 bg-red-50 px-4 py-2 rounded-xl border border-red-100 uppercase italic"><i data-lucide="shield" className="w-3 h-3 mr-2 text-red-400"></i> {s}</div>
                                             ))}
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'unidades' && (
+                            <div className="space-y-8 animate-in fade-in duration-500">
+                                <div className="text-center mb-6">
+                                    <h2 className="text-2xl font-black text-slate-800 uppercase italic">Unidades de Salud por Estrato de Riesgo</h2>
+                                </div>
+                                
+                                {/* Estrato 3 */}
+                                <div className="bg-white rounded-3xl border-2 border-red-100 overflow-hidden shadow-sm">
+                                    <div className="bg-red-800 p-4 text-white flex items-center space-x-3">
+                                        <i data-lucide="shield" className="w-5 h-5"></i>
+                                        <span className="font-black uppercase tracking-widest italic">ESTRATO 3</span>
+                                    </div>
+                                    <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        {healthUnits.estrato3.map((unit, i) => (
+                                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col items-center text-center shadow-inner group hover:border-red-200 transition-colors">
+                                                <i data-lucide="hospital" className="w-10 h-10 text-red-700 mb-4 opacity-70 group-hover:scale-110 transition-transform"></i>
+                                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{unit.id}</span>
+                                                <p className="font-bold text-slate-800 leading-tight">{unit.name}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Estrato 2 */}
+                                <div className="bg-white rounded-3xl border-2 border-orange-100 overflow-hidden shadow-sm">
+                                    <div className="bg-orange-500 p-4 text-white flex items-center space-x-3">
+                                        <i data-lucide="shield" className="w-5 h-5"></i>
+                                        <span className="font-black uppercase tracking-widest italic">ESTRATO 2</span>
+                                    </div>
+                                    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                        {healthUnits.estrato2.map((unit, i) => (
+                                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col items-center text-center shadow-inner group hover:border-orange-200 transition-colors">
+                                                <i data-lucide="hospital" className="w-10 h-10 text-orange-600 mb-4 opacity-70 group-hover:scale-110 transition-transform"></i>
+                                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{unit.id}</span>
+                                                <p className="font-bold text-slate-800 leading-tight">{unit.name}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Nota Estrato 1 */}
+                                <div className="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 text-center">
+                                    <div className="inline-flex items-center px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-4">Aviso Importante</div>
+                                    <p className="text-blue-900 font-bold text-lg leading-snug">
+                                        El resto de las unidades de salud no mencionadas anteriormente se encuentran clasificadas en <span className="font-black uppercase italic border-b-2 border-blue-400">Estrato 1</span>.
+                                    </p>
+                                </div>
+
+                                {/* Material de Apoyo */}
+                                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-3xl border-2 border-purple-200 shadow-md hover:shadow-lg transition-shadow">
+                                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                                        <div className="flex items-center space-x-4 flex-1">
+                                            <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                                                <i data-lucide="folder-open" className="w-8 h-8"></i>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-black text-purple-900 uppercase italic mb-1">Material de Apoyo</h3>
+                                                <p className="text-purple-700 font-bold text-sm">Accede a recursos, documentos y materiales educativos</p>
+                                            </div>
+                                        </div>
+                                        <a 
+                                            href="https://drive.google.com/drive/folders/1TnYgPkN7ZBz_vdfKuxM_3SWMpGoQd90a?usp=sharing" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white font-black px-8 py-4 rounded-2xl uppercase tracking-widest text-sm transition-all hover:shadow-lg transform hover:scale-105 whitespace-nowrap"
+                                        >
+                                            <i data-lucide="external-link" className="w-5 h-5"></i>
+                                            <span>Abrir Drive</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Capacitaciones */}
+                                <div className="bg-gradient-to-br from-cyan-50 to-sky-50 p-8 rounded-3xl border-2 border-cyan-200 shadow-md">
+                                    <div className="flex flex-col items-start mb-8">
+                                        <div className="flex items-center space-x-4 w-full">
+                                            <div className="w-16 h-16 bg-cyan-500 rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                                                <i data-lucide="graduation-cap" className="w-8 h-8"></i>
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-2xl font-black text-cyan-900 uppercase italic mb-1">Capacitaciones</h3>
+                                                <p className="text-cyan-700 font-bold text-sm">Accede a cursos en línea para profesionales de la salud</p>
+                                            </div>
+                                        </div>
+                                        <div className="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-cyan-100 text-cyan-700 text-xs font-black uppercase tracking-widest">
+                                            <i data-lucide="external-link" className="w-3 h-3 mr-2"></i>
+                                            Telesalud Nuevo León
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {trainings.map((training, i) => (
+                                            <a
+                                                key={i}
+                                                href="http://telesalud.saludnl.gob.mx/telesalud/cursos/course/index.php?categoryid=6"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="bg-white p-6 rounded-2xl border-2 border-cyan-100 hover:border-cyan-400 shadow-sm hover:shadow-md transition-all group cursor-pointer"
+                                            >
+                                                <div className="flex items-start space-x-3 mb-3">
+                                                    <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600 flex-shrink-0 group-hover:bg-cyan-500 group-hover:text-white transition-colors">
+                                                        <i data-lucide="book-open" className="w-5 h-5"></i>
+                                                    </div>
+                                                    <p className="text-sm font-bold text-cyan-900 leading-snug group-hover:text-cyan-600 transition-colors">{training.title}</p>
+                                                </div>
+                                                <div className="flex items-center space-x-2 text-cyan-600 text-xs font-bold uppercase mt-4 group-hover:translate-x-1 transition-transform">
+                                                    <span>Acceder</span>
+                                                    <i data-lucide="arrow-right" className="w-4 h-4"></i>
+                                                </div>
+                                            </a>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +408,7 @@
                         )}
 
                         {activeTab === 'estratos' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in slide-in-from-bottom-4 duration-500">
                                 {STRATA.map((s) => (
                                     <div key={s.id} className={`p-8 rounded-3xl border-2 transition-all ${s.color}`}>
                                         <div className="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center font-black text-xl mb-6">{s.id}</div>
@@ -273,6 +418,66 @@
                                 ))}
                             </div>
                         )}
+
+                        {activeTab === 'tratamiento' && (
+                            <div className="space-y-6 animate-in fade-in duration-500">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="bg-white p-8 rounded-3xl border-2 border-blue-100 shadow-sm relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 text-blue-600"><i data-lucide="shield" className="lucide-lg"></i></div>
+                                        <h3 className="text-xl font-black text-blue-800 uppercase italic mb-4">Tratamiento de Cura Radical (TCR)</h3>
+                                        <div className="space-y-4 text-sm text-slate-700">
+                                            <p className="font-bold flex items-center text-blue-600"><i data-lucide="check-circle-2" className="mr-2"></i> Cloroquina + Primaquina</p>
+                                            <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                                                <p className="font-black text-blue-900 mb-1">Esquema 14 días:</p>
+                                                <p>Pacientes en entidades federativas con <span className="font-bold uppercase tracking-tighter">baja o nula transmisión</span>.</p>
+                                            </div>
+                                            <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                                                <p className="font-black text-blue-900 mb-1">Esquema 7 días:</p>
+                                                <p>Pacientes en entidades federativas donde <span className="font-bold uppercase tracking-tighter">continúa la endemicidad</span>.</p>
+                                            </div>
+                                            <p className="text-[10px] text-slate-400 italic uppercase">Para casos autóctonos causados por Plasmodium vivax y Plasmodium ovale.</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white p-8 rounded-3xl border-2 border-orange-100 shadow-sm relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 text-orange-600"><i data-lucide="activity" className="lucide-lg"></i></div>
+                                        <h3 className="text-xl font-black text-orange-800 uppercase italic mb-4">Tratamiento Plasmodium Falciparum y Grave</h3>
+                                        <div className="space-y-4 text-sm text-slate-700">
+                                            <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                                                <p className="font-black text-orange-900 mb-1">Plasmodium falciparum (Coartem):</p>
+                                                <p>Composición a dosis fija de <span className="font-bold">Artemeter con Lumefantrina</span>.</p>
+                                            </div>
+                                            <div className="p-4 bg-red-50 rounded-2xl border border-red-100">
+                                                <p className="font-black text-red-900 mb-1">Paludismo Grave:</p>
+                                                <p className="mb-2">Requiere tratamiento en <span className="font-black text-red-600">NIVEL HOSPITALARIO</span>.</p>
+                                                <p>Manejo inicial con <span className="font-bold uppercase">Artesunato</span> y continuación con 3 días de Coartem.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-800 p-8 rounded-3xl text-white shadow-xl">
+                                    <div className="flex items-center space-x-3 mb-4">
+                                        <i data-lucide="alert-circle" className="text-orange-400"></i>
+                                        <h3 className="text-lg font-black uppercase italic tracking-widest">Seguimiento Hemático</h3>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
+                                        <div className="space-y-2 opacity-90">
+                                            <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium vivax:</p>
+                                            <p className="leading-relaxed">Muestreo a los <span className="text-white font-black">7, 14, 21 y 28 días</span> a partir del término del tratamiento, y posteriormente <span className="text-white font-black">mensual por un año</span>.</p>
+                                        </div>
+                                        <div className="space-y-2 opacity-90">
+                                            <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium falciparum:</p>
+                                            <p className="leading-relaxed text-balance italic">Toma de muestra previa a la administración de cada dosis de medicamento para asegurar la eliminación de la carga parasitaria.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="mt-12 pt-6 border-t border-slate-200 text-center">
+                            <p className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Fuente: Guía de Lineamientos Operativos para Paludismo en México</p>
+                        </div>
                     </main>
                 </div>
             );

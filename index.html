@@ -81,24 +81,30 @@
             ];
 
             const vectorActions = [
-                { category: "Tratamiento", activity: "Disponibilidad de medicamentos específicos", s1: "Cabeceras", s2: "Cabeceras", s3: "Locales", s4: "Locales" },
-                { category: "Detección", activity: "Búsqueda Activa (Focos Activos/Residuales)", s1: "No aplica", s2: "No aplica", s3: "Loc. Centinelas", s4: "2 visitas mes / Mensual" },
-                { category: "Acciones Vector", activity: "Distribución de PTILD (Pabellones)", s1: "No aplica", s2: "Reactiva (Riesgo)", s3: "Reactiva (Riesgo)", s4: "100% población" },
-                { category: "Acciones Vector", activity: "Rociado Residual Intradomiciliario (RRI)", s1: "No aplica", s2: "Reactiva (Riesgo)", s3: "Reactiva (Riesgo)", s4: "100% trimestral" },
-                { category: "EMHCA's", activity: "Eliminación y Modificación de Hábitats", s1: "No aplica", s2: "No aplica", s3: "Riesgo reintro.", s4: "Mensual" },
-                { category: "Vigilancia", activity: "Estudios Hidroentomológicos / Larvicidas", s1: "No aplica", s2: "No aplica", s3: "Trimestral", s4: "Previo/Post acciones" }
+                { category: "TRATAMIENTO", activity: "Disponibilidad de medicamentos en los niveles correspondientes.", s1: "Cabeceras", s2: "Cabeceras", s3: "Locales y PSM", s4: "Niveles locales" },
+                { category: "TRATAMIENTO", activity: "Tratamiento oportuno en las primeras 24 horas post-confirmación.", s1: "24 horas", s2: "24 horas", s3: "24 horas", s4: "Inmediato (24h)" },
+                { category: "TRATAMIENTO", activity: "Seguimiento hemático post-tratamiento según protocolo.", s1: "Anual", s2: "Anual", s3: "Anual", s4: "Mensual" },
+                { category: "DETECCIÓN", activity: "Búsqueda activa de casos en localidades de riesgo.", s1: "No aplica", s2: "No aplica", s3: "Centinelas", s4: "Dos visitas al mes" },
+                { category: "DETECCIÓN", activity: "Búsqueda pasiva de casos de forma permanente.", s1: "Permanente", s2: "Permanente", s3: "Permanente", s4: "Permanente" },
+                { category: "DETECCIÓN", activity: "Promoción de la notificación voluntaria.", s1: "No aplica", s2: "Trimestral", s3: "Trimestral", s4: "Dos visitas al mes" },
+                { category: "ACCIONES", activity: "Distribución de PTILD o RRI en casas palúdicas.", s1: "No aplica", s2: "Reactiva", s3: "Reactiva", s4: "Cobertura 100%" },
+                { category: "ACCIONES", activity: "Rociado residual intradomiciliario según riesgo.", s1: "No aplica", s2: "Según riesgo", s3: "Según riesgo", s4: "Trimestral (100%)" },
+                { category: "ACCIONES", activity: "Aplicación de larvicidas en criaderos potenciales.", s1: "No aplica", s2: "No aplica", s3: "Alto riesgo", s4: "Semanal" },
+                { category: "VIGILANCIA", activity: "Estudios Hidroentomológicos en áreas críticas.", s1: "No aplica", s2: "No aplica", s3: "Trimestral", s4: "Mensual" },
+                { category: "VIGILANCIA", activity: "Evaluación de fases adultas del vector.", s1: "No aplica", s2: "No aplica", s3: "Trimestral", s4: "Mensual" },
+                { category: "VIGILANCIA", activity: "Monitoreo de resistencia a insecticidas.", s1: "No aplica", s2: "No aplica", s3: "No aplica", s4: "Anual" }
             ];
 
             const promotionActions = [
-                { line: "Capacitación", activity: "Capacitar a personal de promoción en prevención de paludismo. Anual", s1: "Anual", s2: "Anual", s3: "Anual", s4: "Anual" },
-                { line: "Educación", activity: "Consejerías a población sobre signos, síntomas y medidas. Mensual", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
-                { line: "Comunicación", activity: "Elaboración de materiales educativos sobre paludismo. Trimestral", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Trimestral" },
-                { line: "Comunicación", activity: "Difusión de material digital en redes de apoyo. Trimestral", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Trimestral" },
-                { line: "Supervisión", activity: "Supervisión de actividades de promoción establecidas. Mensual", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
-                { line: "Evidencia", activity: "Envío de evidencia e informe electrónico. Mensual", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
-                { line: "Comités", activity: "Capacitación a comités locales y plan de trabajo. Anual", s1: "No aplica", s2: "No aplica", s3: "Anual", s4: "Anual" },
-                { line: "Comités", activity: "Seguimiento de plan de trabajo de comités locales. Mensual", s1: "No aplica", s2: "No aplica", s3: "Mensual", s4: "Mensual" },
-                { line: "Educación", activity: "Sesiones educativas a la población sobre prevención. Mensual", s1: "No aplica", s2: "No aplica", s3: "Mensual", s4: "Mensual" }
+                { line: "Capacitación", activity: "Capacitar a personal de promoción en prevención de paludismo.", s1: "Anual", s2: "Anual", s3: "Anual", s4: "Anual" },
+                { line: "Educación", activity: "Consejerías a población sobre signos, síntomas y medidas.", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
+                { line: "Comunicación", activity: "Elaboración de materiales educativos sobre paludismo. ", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Trimestral" },
+                { line: "Comunicación", activity: "Difusión de material digital en redes de apoyo.", s1: "Trimestral", s2: "Trimestral", s3: "Trimestral", s4: "Trimestral" },
+                { line: "Supervisión", activity: "Supervisión de actividades de promoción establecidas.", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
+                { line: "Evidencia", activity: "Envío de evidencia e informe electrónico.", s1: "Mensual", s2: "Mensual", s3: "Mensual", s4: "Mensual" },
+                { line: "Comités", activity: "Capacitación a comités locales y plan de trabajo.", s1: "No aplica", s2: "No aplica", s3: "Anual", s4: "Anual" },
+                { line: "Comités", activity: "Seguimiento de plan de trabajo de comités locales.", s1: "No aplica", s2: "No aplica", s3: "Mensual", s4: "Mensual" },
+                { line: "Educación", activity: "Sesiones educativas a la población sobre prevención.", s1: "No aplica", s2: "No aplica", s3: "Mensual", s4: "Mensual" }
             ];
 
             const countries = ['Bolivia', 'Brasil', 'Colombia', 'Costa Rica', 'Ecuador', 'Guatemala', 'Guyana', 'Haití', 'Honduras', 'Nicaragua', 'Panamá', 'Perú', 'Republica Dominicana', 'Surinam', 'Venezuela'];
@@ -343,27 +349,29 @@
                                 </div>
 
                                 {/* Tabla Vectores Detallada */}
-                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden border-orange-100">
-                                    <div className="bg-orange-600 p-5 flex items-center space-x-3 text-white">
-                                        <i data-lucide="bug"></i>
-                                        <h2 className="font-black uppercase tracking-widest text-sm italic">Componente: Vectores e Insumos</h2>
+                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden border-slate-100">
+                                    <div className="bg-[#0f766e] p-5 flex items-center space-x-3 text-white">
+                                        <i data-lucide="users"></i>
+                                        <h2 className="font-black uppercase tracking-widest text-sm italic">COMPONENTE: VECTORES</h2>
                                     </div>
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left text-[11px] border-collapse">
                                             <thead>
-                                                <tr className="bg-orange-50 border-b-2 border-orange-100">
-                                                    <th className="p-4 font-black text-orange-800/40 uppercase">Categoría</th>
-                                                    <th className="p-4 font-black text-orange-800/40 uppercase">Actividad</th>
-                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-700 uppercase text-center">{s.name}</th>)}
+                                                <tr className="bg-white border-b border-slate-100">
+                                                    <th className="p-4 font-black text-slate-500 uppercase">Línea</th>
+                                                    <th className="p-4 font-black text-slate-500 uppercase">Actividad Programática Completa</th>
+                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-500 uppercase text-center">{s.name}</th>)}
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-orange-50">
+                                            <tbody className="divide-y divide-slate-50">
                                                 {vectorActions.map((row, i) => (
-                                                    <tr key={i} className="hover:bg-orange-50/50">
-                                                        <td className="p-4 font-black text-orange-900/40 uppercase italic border-r">{row.category}</td>
+                                                    <tr key={i} className="hover:bg-slate-50/50">
+                                                        <td className="p-4 font-bold text-slate-400 uppercase italic border-r">{row.category}</td>
                                                         <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
                                                         {['s1', 's2', 's3', 's4'].map(st => (
-                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-900 bg-red-50/30 italic' : 'text-slate-600'}`}>{row[st]}</td>
+                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-800' : (row[st] === 'No aplica' ? 'text-slate-400 italic' : 'text-slate-600')}`}>
+                                                                {row[st]}
+                                                            </td>
                                                         ))}
                                                     </tr>
                                                 ))}

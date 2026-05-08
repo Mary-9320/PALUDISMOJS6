@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminación del Paludismo 2025-2030</title>
-    <!-- Favicon de mosquito de malaria agregado -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦟</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -262,6 +261,229 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'unidades' && (
+                            <div className="space-y-8 animate-in fade-in duration-500">
+                                <div className="text-center mb-6">
+                                    <h2 className="text-2xl font-black text-slate-800 uppercase italic">Unidades de Salud por Estrato de Riesgo</h2>
+                                </div>
+                                
+                                {/* Estrato 3 */}
+                                <div className="bg-white rounded-3xl border-2 border-red-100 overflow-hidden shadow-sm">
+                                    <div className="bg-red-800 p-4 text-white flex items-center space-x-3">
+                                        <i data-lucide="shield" className="w-5 h-5"></i>
+                                        <span className="font-black uppercase tracking-widest italic">ESTRATO 3</span>
+                                    </div>
+                                    <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        {healthUnits.estrato3.map((unit, i) => (
+                                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col items-center text-center shadow-inner group hover:border-red-200 transition-colors">
+                                                <i data-lucide="hospital" className="w-10 h-10 text-red-700 mb-4 opacity-70 group-hover:scale-110 transition-transform"></i>
+                                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{unit.id}</span>
+                                                <p className="font-bold text-slate-800 leading-tight">{unit.name}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Estrato 2 */}
+                                <div className="bg-white rounded-3xl border-2 border-orange-100 overflow-hidden shadow-sm">
+                                    <div className="bg-orange-500 p-4 text-white flex items-center space-x-3">
+                                        <i data-lucide="shield" className="w-5 h-5"></i>
+                                        <span className="font-black uppercase tracking-widest italic">ESTRATO 2</span>
+                                    </div>
+                                    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                        {healthUnits.estrato2.map((unit, i) => (
+                                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col items-center text-center shadow-inner group hover:border-orange-200 transition-colors">
+                                                <i data-lucide="hospital" className="w-10 h-10 text-orange-600 mb-4 opacity-70 group-hover:scale-110 transition-transform"></i>
+                                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{unit.id}</span>
+                                                <p className="font-bold text-slate-800 leading-tight">{unit.name}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Nota Estrato 1 */}
+                                <div className="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 text-center">
+                                    <div className="inline-flex items-center px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-4">Aviso Importante</div>
+                                    <p className="text-blue-900 font-bold text-lg leading-snug">
+                                        El resto de las unidades de salud no mencionadas anteriormente se encuentran clasificadas en <span className="font-black uppercase italic border-b-2 border-blue-400">Estrato 1</span>.
+                                    </p>
+                                </div>
+
+                                {/* Material de Apoyo */}
+                                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-3xl border-2 border-purple-200 shadow-md hover:shadow-lg transition-shadow">
+                                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                                        <div className="flex items-center space-x-4 flex-1">
+                                            <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                                                <i data-lucide="folder-open" className="w-8 h-8"></i>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-black text-purple-900 uppercase italic mb-1">Material de Apoyo</h3>
+                                                <p className="text-purple-700 font-bold text-sm">Accede a las Normas Oficiales, Guías Operativas, Manuales y Formatos de Paludismo</p>
+                                            </div>
+                                        </div>
+                                        <a 
+                                            href="https://drive.google.com/drive/folders/1TnYgPkN7ZBz_vdfKuxM_3SWMpGoQd90a?usp=sharing" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white font-black px-8 py-4 rounded-2xl uppercase tracking-widest text-sm transition-all hover:shadow-lg transform hover:scale-105 whitespace-nowrap"
+                                        >
+                                            <i data-lucide="external-link" className="w-5 h-5"></i>
+                                            <span>Abrir Drive</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Capacitaciones */}
+                                <div className="bg-gradient-to-br from-cyan-50 to-sky-50 p-8 rounded-3xl border-2 border-cyan-200 shadow-md">
+                                    <div className="flex flex-col items-start mb-8">
+                                        <div className="flex items-center space-x-4 w-full">
+                                            <div className="w-16 h-16 bg-cyan-500 rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                                                <i data-lucide="graduation-cap" className="w-8 h-8"></i>
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-2xl font-black text-cyan-900 uppercase italic mb-1">Capacitaciones</h3>
+                                                <p className="text-cyan-700 font-bold text-sm">Accede a cursos en línea para profesionales de la salud</p>
+                                            </div>
+                                        </div>
+                                        <div className="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-cyan-100 text-cyan-700 text-xs font-black uppercase tracking-widest">
+                                            <i data-lucide="external-link" className="w-3 h-3 mr-2"></i>
+                                            Telesalud Nuevo León
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {trainings.map((training, i) => (
+                                            <a
+                                                key={i}
+                                                href="http://telesalud.saludnl.gob.mx/telesalud/cursos/course/index.php?categoryid=6"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="bg-white p-6 rounded-2xl border-2 border-cyan-100 hover:border-cyan-400 shadow-sm hover:shadow-md transition-all group cursor-pointer"
+                                            >
+                                                <div className="flex items-start space-x-3 mb-3">
+                                                    <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600 flex-shrink-0 group-hover:bg-cyan-500 group-hover:text-white transition-colors">
+                                                        <i data-lucide="book-open" className="w-5 h-5"></i>
+                                                    </div>
+                                                    <p className="text-sm font-bold text-cyan-900 leading-snug group-hover:text-cyan-600 transition-colors">{training.title}</p>
+                                                </div>
+                                                <div className="flex items-center space-x-2 text-cyan-600 text-xs font-bold uppercase mt-4 group-hover:translate-x-1 transition-transform">
+                                                    <span>Acceder</span>
+                                                    <i data-lucide="arrow-right" className="w-4 h-4"></i>
+                                                </div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'acciones' && (
+                            <div className="space-y-12 pb-24">
+                                {/* Tabla Epidemiología Detallada */}
+                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden">
+                                    <div className="bg-slate-800 p-5 flex items-center space-x-3 text-white">
+                                        <i data-lucide="activity" className="text-orange-400"></i>
+                                        <h2 className="font-black uppercase tracking-widest text-sm italic">Componente: Vigilancia Epidemiológica</h2>
+                                    </div>
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left text-[11px] border-collapse">
+                                            <thead>
+                                                <tr className="bg-slate-50 border-b-2 border-slate-100">
+                                                    <th className="p-4 font-black text-slate-400 uppercase">Línea de Acción</th>
+                                                    <th className="p-4 font-black text-slate-400 uppercase">Actividad Programática</th>
+                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-700 uppercase text-center">{s.name}</th>)}
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-slate-50">
+                                                {epidemiologyActions.map((row, i) => (
+                                                    <tr key={i} className="hover:bg-slate-50/50">
+                                                        <td className="p-4 font-black text-slate-500 uppercase italic border-r">{row.action}</td>
+                                                        <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
+                                                        {['s1', 's2', 's3', 's4'].map(st => (
+                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-900 bg-red-50/30 italic' : 'text-slate-600'}`}>{row[st]}</td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                {/* Tabla Vectores Detallada */}
+                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden border-slate-100">
+                                    <div className="bg-[#0f766e] p-5 flex items-center space-x-3 text-white">
+                                        <i data-lucide="users"></i>
+                                        <h2 className="font-black uppercase tracking-widest text-sm italic">COMPONENTE: VECTORES</h2>
+                                    </div>
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left text-[11px] border-collapse">
+                                            <thead>
+                                                <tr className="bg-white border-b border-slate-100">
+                                                    <th className="p-4 font-black text-slate-500 uppercase">Línea</th>
+                                                    <th className="p-4 font-black text-slate-500 uppercase">Actividad Programática Completa</th>
+                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-500 uppercase text-center">{s.name}</th>)}
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-slate-50">
+                                                {vectorActions.map((row, i) => (
+                                                    <tr key={i} className="hover:bg-slate-50/50">
+                                                        <td className="p-4 font-bold text-slate-400 uppercase italic border-r">{row.category}</td>
+                                                        <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
+                                                        {['s1', 's2', 's3', 's4'].map(st => (
+                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-800' : (row[st] === 'No aplica' ? 'text-slate-400 italic' : 'text-slate-600')}`}>
+                                                                {row[st]}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                {/* Tabla Promoción Detallada (9 Actividades) */}
+                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden border-teal-100">
+                                    <div className="bg-teal-700 p-5 flex items-center space-x-3 text-white">
+                                        <i data-lucide="users" className="text-teal-300"></i>
+                                        <h2 className="font-black uppercase tracking-widest text-sm italic">Componente: Promoción de la Salud</h2>
+                                    </div>
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left text-[11px] border-collapse">
+                                            <thead>
+                                                <tr className="bg-teal-50 border-b-2 border-teal-100">
+                                                    <th className="p-4 font-black text-teal-800/50 uppercase">Línea</th>
+                                                    <th className="p-4 font-black text-teal-800/50 uppercase">Actividad Programática Completa</th>
+                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-700 uppercase text-center">{s.name}</th>)}
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-teal-50">
+                                                {promotionActions.map((row, i) => (
+                                                    <tr key={i} className="hover:bg-teal-50/50">
+                                                        <td className="p-4 font-black text-teal-900/40 uppercase italic border-r">{row.line}</td>
+                                                        <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
+                                                        {['s1', 's2', 's3', 's4'].map(st => (
+                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-900 bg-red-50/30 italic' : 'text-slate-600'}`}>{row[st]}</td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'estratos' && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in slide-in-from-bottom-4 duration-500">
+                                {STRATA.map((s) => (
+                                    <div key={s.id} className={`p-8 rounded-3xl border-2 transition-all ${s.color}`}>
+                                        <div className="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center font-black text-xl mb-6">{s.id}</div>
+                                        <h3 className="text-xl font-black mb-3 uppercase italic leading-tight">{s.description}</h3>
+                                        <p className="text-xs font-bold leading-relaxed opacity-80">{s.detail}</p>
+                                    </div>
+                                ))}
                             </div>
                         )}
 
@@ -558,8 +780,8 @@
                                                 <ul className="space-y-4 text-sm text-slate-700 font-medium leading-relaxed">
                                                     <li>• Reportar especie (<i className="italic">P. vivax, P. falciparum, P. malariae, P. ovale</i>) y densidad parasitaria.</li>
                                                     <li>• Notificar inmediatamente como <span className="font-black text-green-800 bg-green-100 px-2 py-1 rounded">CASO CONFIRMADO</span>.</li>
-                                                    <li>• Iniciar/continuar tratamiento específico según Norma Oficial Mexicana y guías vigentes.</li>
-                                                     <li>• Personal del Programa de Vectores proporcionara el tratamiento.</li>
+                                                    <li>• Iniciar/continuar tratamiento específico según Norma Oficial Mexicana y guías vigentes.</li>  
+                                                      <li>• Personal del Programa de Vectores proporcionara el tratamiento.</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -620,6 +842,62 @@
                                     <p className="font-black text-base md:text-xl uppercase tracking-widest leading-relaxed">
                                         ANTE FIEBRE EN PERSONA PROCEDENTE DE ZONA ENDÉMICA: <br className="hidden md:block"/> ¡PIENSA EN PALUDISMO, CONFIRMA Y NOTIFICA!
                                     </p>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'tratamiento' && (
+                            <div className="space-y-6 animate-in fade-in duration-500">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="bg-white p-8 rounded-3xl border-2 border-blue-100 shadow-sm relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 text-blue-600"><i data-lucide="shield" className="lucide-lg"></i></div>
+                                        <h3 className="text-xl font-black text-blue-800 uppercase italic mb-4">Tratamiento de Cura Radical (TCR)</h3>
+                                        <div className="space-y-4 text-sm text-slate-700">
+                                            <p className="font-bold flex items-center text-blue-600"><i data-lucide="check-circle-2" className="mr-2"></i> Cloroquina + Primaquina</p>
+                                            <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                                                <p className="font-black text-blue-900 mb-1">Esquema 14 días:</p>
+                                                <p>Pacientes en entidades federativas con <span className="font-bold uppercase tracking-tighter">baja o nula transmisión</span>.</p>
+                                            </div>
+                                            <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                                                <p className="font-black text-blue-900 mb-1">Esquema 7 días:</p>
+                                                <p>Pacientes en entidades federativas donde <span className="font-bold uppercase tracking-tighter">continúa la endemicidad</span>.</p>
+                                            </div>
+                                            <p className="text-[10px] text-slate-400 italic uppercase">Para casos autóctonos causados por Plasmodium vivax y Plasmodium ovale.</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white p-8 rounded-3xl border-2 border-orange-100 shadow-sm relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 text-orange-600"><i data-lucide="activity" className="lucide-lg"></i></div>
+                                        <h3 className="text-xl font-black text-orange-800 uppercase italic mb-4">Tratamiento Plasmodium Falciparum y Grave</h3>
+                                        <div className="space-y-4 text-sm text-slate-700">
+                                            <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                                                <p className="font-black text-orange-900 mb-1">Plasmodium falciparum (Coartem):</p>
+                                                <p>Composición a dosis fija de <span className="font-bold">Artemeter con Lumefantrina</span>.</p>
+                                            </div>
+                                            <div className="p-4 bg-red-50 rounded-2xl border border-red-100">
+                                                <p className="font-black text-red-900 mb-1">Paludismo Grave:</p>
+                                                <p className="mb-2">Requiere tratamiento en <span className="font-black text-red-600">NIVEL HOSPITALARIO</span>.</p>
+                                                <p>Manejo inicial con <span className="font-bold uppercase">Artesunato</span> y continuación con 3 días de Coartem.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-800 p-8 rounded-3xl text-white shadow-xl">
+                                    <div className="flex items-center space-x-3 mb-4">
+                                        <i data-lucide="alert-circle" className="text-orange-400"></i>
+                                        <h3 className="text-lg font-black uppercase italic tracking-widest">Seguimiento Hemático</h3>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
+                                        <div className="space-y-2 opacity-90">
+                                            <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium vivax:</p>
+                                            <p className="leading-relaxed">Muestreo a los <span className="text-white font-black">7, 14, 21 y 28 días</span> a partir del término del tratamiento, y posteriormente <span className="text-white font-black">mensual por un año</span>.</p>
+                                        </div>
+                                        <div className="space-y-2 opacity-90">
+                                            <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium falciparum:</p>
+                                            <p className="leading-relaxed text-balance italic">Toma de muestra previa a la administración de cada dosis de medicamento para asegurar la eliminación de la carga parasitaria.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}

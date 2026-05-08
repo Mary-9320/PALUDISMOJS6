@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminación del Paludismo 2025-2030</title>
+    <!-- Favicon de mosquito de malaria agregado -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦟</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -115,7 +117,6 @@
                     <header className="max-w-7xl mx-auto mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div className="flex items-center space-x-4">
                             <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-2xl shadow-lg border-2 border-orange-400">NL</div>
-                            {/* Título y Subtítulo */}
             <div className="flex flex-col">
                 <h1 className="text-2xl font-black text-slate-800 tracking-tight leading-none uppercase">
                     Servicios de Salud O.P.D.
@@ -146,6 +147,9 @@
                             <button onClick={() => setActiveTab('acciones')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'acciones' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
                                 <i data-lucide="clipboard-list" className="mr-2"></i> Líneas de Acción
                             </button>
+                            <button onClick={() => setActiveTab('algoritmo')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'algoritmo' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                                <i data-lucide="git-merge" className="mr-2"></i> Algoritmo
+                            </button>
                             <button onClick={() => setActiveTab('tratamiento')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'tratamiento' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
                                 <i data-lucide="heart" className="mr-2"></i> Tratamiento
                             </button>
@@ -160,7 +164,7 @@
                                             <h2 className="text-2xl font-black uppercase italic tracking-tighter">Caso Probable</h2>
                                         </div>
                                         <p className="text-slate-700 text-lg leading-relaxed mb-8">
-                                            Toda persona que <span className="bg-red-50 px-1 font-bold text-red-600 border-b-2 border-red-200">resida o provenga</span> de un área con antecedente de transmisión de <span className="font-black text-red-600 uppercase">Paludismo</span> (últimos 3 años) y presente <span className="font-black text-red-600 uppercase">Fiebre</span> más signos y síntomas:
+                                            Toda persona que <span className="bg-red-50 px-1 font-bold text-red-600 border-b-2 border-red-200">resida o provenga</span> de un área con antecedente de transmisión de <span className="font-black text-red-600 uppercase">Paludismo</span> (últimos 3 años) y presente <span className="font-black text-red-600 uppercase">Fiebre</span> más signos y síntomas (último mes):
                                         </p>
                                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                                             {[
@@ -189,302 +193,433 @@
                                         </p>
                                     </div>
                                 </div>
+
                                 <div className="bg-white p-8 rounded-3xl border-2 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-12">
                                     <div>
                                         <h3 className="text-lg font-black uppercase text-slate-700 mb-6 flex items-center"><i data-lucide="globe" className="mr-2 text-blue-500"></i> Países con Transmisión</h3>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                             {countries.map((c, i) => (
-                                                <div key={i} className="flex items-center text-[9px] font-bold text-slate-600 bg-slate-50 px-3 py-2 rounded-lg border uppercase italic"><i data-lucide="check-circle-2" className="w-3 h-3 mr-2 text-green-500"></i> {c}</div>
+                                                <div key={i} className="flex items-center text-xs font-bold text-slate-600 bg-slate-50 px-3 py-2.5 rounded-lg border uppercase italic shadow-sm"><i data-lucide="check-circle-2" className="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i> {c}</div>
                                             ))}
                                         </div>
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-black uppercase text-slate-700 mb-6 flex items-center"><i data-lucide="map-pin" className="mr-2 text-red-500"></i> Entidades Federativas con transmisión </h3>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-3">
                                             {mexicanStates.map((s, i) => (
-                                                <div key={i} className="flex items-center text-xs font-black text-red-700 bg-red-50 px-4 py-2 rounded-xl border border-red-100 uppercase italic"><i data-lucide="shield" className="w-3 h-3 mr-2 text-red-400"></i> {s}</div>
+                                                <div key={i} className="flex items-center text-sm font-black text-red-700 bg-red-50 px-4 py-2.5 rounded-xl border border-red-100 uppercase italic shadow-sm"><i data-lucide="shield" className="w-4 h-4 mr-2 text-red-400 flex-shrink-0"></i> {s}</div>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* NUEVA SECCIÓN: Foco Palúdico */}
+                                <div className="bg-white p-8 rounded-3xl border-2 shadow-sm">
+                                    <div className="flex items-center space-x-3 mb-6 text-orange-600">
+                                        <i data-lucide="target" className="w-6 h-6"></i>
+                                        <h2 className="text-2xl font-black uppercase italic tracking-tighter bg-orange-500 text-white px-4 py-1 rounded-lg shadow-sm">Foco Palúdico</h2>
+                                    </div>
+                                    
+                                    <div className="mb-8">
+                                        <p className="text-slate-700 text-lg leading-relaxed">
+                                            <span className="font-bold text-slate-900">Zona geográfica delimitada</span> y circunscrita en donde actual o anteriormente se presentan casos de paludismo autóctono y que presenta las <span className="font-bold text-slate-900">condiciones epidemiológicas, ecológicas y sociales</span>, necesarias para la transmisión del paludismo.
+                                        </p>
+                                        <p className="text-slate-500 mt-3 text-base">
+                                            Integrados por una o más localidades.
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
+                                        <div className="text-center mb-8 relative">
+                                            <h3 className="text-xl font-black text-slate-800 uppercase tracking-widest mb-2">Tipos de Focos:</h3>
+                                            <p className="text-sm font-bold text-slate-600 bg-white inline-block px-4 py-2 rounded-full border shadow-sm z-10 relative">Al registro de un caso o casos autóctonos</p>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                                            {/* Foco Activo */}
+                                            <div className="flex flex-col items-center text-center group">
+                                                <div className="bg-red-600 text-white font-black uppercase tracking-widest px-6 py-4 rounded-xl shadow-[0_6px_0_rgb(153,27,27)] w-full mb-6 transform transition-transform group-hover:-translate-y-1 group-hover:shadow-[0_10px_0_rgb(153,27,27)]">
+                                                    Foco Activo
+                                                </div>
+                                                <p className="text-sm text-slate-600 px-2 leading-relaxed">Con transmisión autóctona en el <span className="font-black text-red-600">último año</span>.</p>
+                                            </div>
+
+                                            {/* Foco Residual */}
+                                            <div className="flex flex-col items-center text-center group">
+                                                <div className="bg-yellow-400 text-yellow-900 font-black uppercase tracking-widest px-6 py-4 rounded-xl shadow-[0_6px_0_rgb(202,138,4)] w-full mb-6 transform transition-transform group-hover:-translate-y-1 group-hover:shadow-[0_10px_0_rgb(202,138,4)]">
+                                                    Foco Residual
+                                                </div>
+                                                <p className="text-sm text-slate-600 px-2 leading-relaxed">Último caso autóctono registrado hace <span className="font-black text-yellow-600">uno a tres años</span>.</p>
+                                            </div>
+
+                                            {/* Foco Eliminado */}
+                                            <div className="flex flex-col items-center text-center group">
+                                                <div className="bg-[#8ec342] text-white font-black uppercase tracking-widest px-6 py-4 rounded-xl shadow-[0_6px_0_rgb(77,110,31)] w-full mb-6 transform transition-transform group-hover:-translate-y-1 group-hover:shadow-[0_10px_0_rgb(77,110,31)]">
+                                                    Foco Eliminado
+                                                </div>
+                                                <p className="text-sm text-slate-600 px-2 leading-relaxed"><span className="font-black text-[#8ec342]">Más de 3 años</span> sin casos autóctonos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         )}
 
-                        {activeTab === 'unidades' && (
-                            <div className="space-y-8 animate-in fade-in duration-500">
-                                <div className="text-center mb-6">
-                                    <h2 className="text-2xl font-black text-slate-800 uppercase italic">Unidades de Salud por Estrato de Riesgo</h2>
-                                </div>
-                                
-                                {/* Estrato 3 */}
-                                <div className="bg-white rounded-3xl border-2 border-red-100 overflow-hidden shadow-sm">
-                                    <div className="bg-red-800 p-4 text-white flex items-center space-x-3">
-                                        <i data-lucide="shield" className="w-5 h-5"></i>
-                                        <span className="font-black uppercase tracking-widest italic">ESTRATO 3</span>
-                                    </div>
-                                    <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-                                        {healthUnits.estrato3.map((unit, i) => (
-                                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col items-center text-center shadow-inner group hover:border-red-200 transition-colors">
-                                                <i data-lucide="hospital" className="w-10 h-10 text-red-700 mb-4 opacity-70 group-hover:scale-110 transition-transform"></i>
-                                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{unit.id}</span>
-                                                <p className="font-bold text-slate-800 leading-tight">{unit.name}</p>
-                                            </div>
-                                        ))}
-                                    </div>
+                        {activeTab === 'algoritmo' && (
+                            <div className="space-y-2 animate-in fade-in duration-500 w-full">
+                                {/* Título del Algoritmo */}
+                                <div className="bg-[#1e3a8a] rounded-3xl p-8 text-center shadow-lg border-b-4 border-[#1e40af] mb-10">
+                                    <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-3">Algoritmo de Atención para Paludismo</h1>
+                                    <h2 className="text-base md:text-lg font-bold text-blue-200 uppercase tracking-widest">Desde la Sospecha Clínica hasta el Envío de la Muestra</h2>
+                                    <p className="text-sm text-blue-300 mt-5 italic">Basado en el Manual de Vigilancia Epidemiológica de las Enfermedades Transmitidas por Vector, Secretaría de Salud, México.</p>
                                 </div>
 
-                                {/* Estrato 2 */}
-                                <div className="bg-white rounded-3xl border-2 border-orange-100 overflow-hidden shadow-sm">
-                                    <div className="bg-orange-500 p-4 text-white flex items-center space-x-3">
-                                        <i data-lucide="shield" className="w-5 h-5"></i>
-                                        <span className="font-black uppercase tracking-widest italic">ESTRATO 2</span>
-                                    </div>
-                                    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                        {healthUnits.estrato2.map((unit, i) => (
-                                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col items-center text-center shadow-inner group hover:border-orange-200 transition-colors">
-                                                <i data-lucide="hospital" className="w-10 h-10 text-orange-600 mb-4 opacity-70 group-hover:scale-110 transition-transform"></i>
-                                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{unit.id}</span>
-                                                <p className="font-bold text-slate-800 leading-tight">{unit.name}</p>
+                                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_400px] gap-8 items-stretch">
+                                    {/* Pasos 1 y 2: Columna Izquierda */}
+                                    <div className="space-y-8 flex flex-col">
+                                        {/* 1. Sospecha Clínica */}
+                                        <div className="bg-white rounded-3xl border-2 border-green-200 shadow-sm overflow-hidden h-full flex flex-col">
+                                            <div className="bg-green-700 p-4 text-white">
+                                                <h3 className="font-black text-base uppercase tracking-widest flex items-center"><span className="bg-white text-green-700 w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">1</span> SOSPECHA CLÍNICA Y EPIDEMIOLÓGICA</h3>
                                             </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Nota Estrato 1 */}
-                                <div className="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 text-center">
-                                    <div className="inline-flex items-center px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-4">Aviso Importante</div>
-                                    <p className="text-blue-900 font-bold text-lg leading-snug">
-                                        El resto de las unidades de salud no mencionadas anteriormente se encuentran clasificadas en <span className="font-black uppercase italic border-b-2 border-blue-400">Estrato 1</span>.
-                                    </p>
-                                </div>
-
-                                {/* Material de Apoyo */}
-                                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-3xl border-2 border-purple-200 shadow-md hover:shadow-lg transition-shadow">
-                                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                                        <div className="flex items-center space-x-4 flex-1">
-                                            <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                                                <i data-lucide="folder-open" className="w-8 h-8"></i>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-black text-purple-900 uppercase italic mb-1">Material de Apoyo</h3>
-                                                <p className="text-purple-700 font-bold text-sm">Accede a las Normas Oficiales, Guías Operativas, Manuales y Formatos de Paludismo</p>
-                                            </div>
-                                        </div>
-                                        <a 
-                                            href="https://drive.google.com/drive/folders/1TnYgPkN7ZBz_vdfKuxM_3SWMpGoQd90a?usp=sharing" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white font-black px-8 py-4 rounded-2xl uppercase tracking-widest text-sm transition-all hover:shadow-lg transform hover:scale-105 whitespace-nowrap"
-                                        >
-                                            <i data-lucide="external-link" className="w-5 h-5"></i>
-                                            <span>Abrir Drive</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Capacitaciones */}
-                                <div className="bg-gradient-to-br from-cyan-50 to-sky-50 p-8 rounded-3xl border-2 border-cyan-200 shadow-md">
-                                    <div className="flex flex-col items-start mb-8">
-                                        <div className="flex items-center space-x-4 w-full">
-                                            <div className="w-16 h-16 bg-cyan-500 rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                                                <i data-lucide="graduation-cap" className="w-8 h-8"></i>
-                                            </div>
-                                            <div className="flex-1">
-                                                <h3 className="text-2xl font-black text-cyan-900 uppercase italic mb-1">Capacitaciones</h3>
-                                                <p className="text-cyan-700 font-bold text-sm">Accede a cursos en línea para profesionales de la salud</p>
-                                            </div>
-                                        </div>
-                                        <div className="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-cyan-100 text-cyan-700 text-xs font-black uppercase tracking-widest">
-                                            <i data-lucide="external-link" className="w-3 h-3 mr-2"></i>
-                                            Telesalud Nuevo León
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                        {trainings.map((training, i) => (
-                                            <a
-                                                key={i}
-                                                href="http://telesalud.saludnl.gob.mx/telesalud/cursos/course/index.php?categoryid=6"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="bg-white p-6 rounded-2xl border-2 border-cyan-100 hover:border-cyan-400 shadow-sm hover:shadow-md transition-all group cursor-pointer"
-                                            >
-                                                <div className="flex items-start space-x-3 mb-3">
-                                                    <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600 flex-shrink-0 group-hover:bg-cyan-500 group-hover:text-white transition-colors">
-                                                        <i data-lucide="book-open" className="w-5 h-5"></i>
+                                            <div className="p-8 flex-1">
+                                                <div className="flex flex-col md:flex-row gap-8">
+                                                    <div className="flex-1 space-y-4">
+                                                        <div className="flex items-center space-x-3 mb-4">
+                                                            <i data-lucide="user" className="text-green-600 w-10 h-10"></i>
+                                                            <p className="font-black text-slate-800 text-base">Sospechar paludismo en toda persona con:</p>
+                                                        </div>
+                                                        <ul className="space-y-3 text-base text-slate-700">
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div><span className="font-bold text-slate-900">Fiebre (actual o en las últimas 48 h)</span></li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Escalofríos</li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Sudoración</li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Cefalea</li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Mialgia</li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Malestar general</li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Anemia (palidez)</li>
+                                                            <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-green-500 mt-2 mr-3 flex-shrink-0"></div>Náusea o vómito</li>
+                                                        </ul>
                                                     </div>
-                                                    <p className="text-sm font-bold text-cyan-900 leading-snug group-hover:text-cyan-600 transition-colors">{training.title}</p>
+                                                    <div className="flex-1 bg-green-50 p-6 rounded-2xl border border-green-100">
+                                                        <p className="font-black text-slate-800 text-base mb-5">Con antecedente de:</p>
+                                                        <ul className="space-y-6 text-base text-slate-700">
+                                                            <li className="flex items-start">
+                                                                <div className="w-2 h-2 rounded-full bg-green-600 mt-2 mr-3 flex-shrink-0"></div>
+                                                                <span className="leading-relaxed">Residencia en zona de transmisión de paludismo en México <span className="font-black text-slate-900">(Chiapas, Oaxaca, Tabasco, Sinaloa, Campeche, Chihuahua)</span></span>
+                                                            </li>
+                                                            <li className="flex items-start">
+                                                                <div className="w-2 h-2 rounded-full bg-green-600 mt-2 mr-3 flex-shrink-0"></div>
+                                                                <span className="leading-relaxed">Viaje a zona endémica del país o del extranjero en los <span className="font-black text-slate-900">últimos 30 días</span></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div className="flex items-center space-x-2 text-cyan-600 text-xs font-bold uppercase mt-4 group-hover:translate-x-1 transition-transform">
-                                                    <span>Acceder</span>
-                                                    <i data-lucide="arrow-right" className="w-4 h-4"></i>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex justify-center py-2">
+                                            <div className="bg-slate-100 rounded-full p-2 border-2 border-slate-200">
+                                                <i data-lucide="arrow-down" className="text-slate-400 w-8 h-8"></i>
+                                            </div>
+                                        </div>
+
+                                        {/* 2. Clasificación Inicial */}
+                                        <div className="bg-white rounded-3xl border-2 border-orange-200 shadow-sm overflow-hidden">
+                                            <div className="bg-[#f59e0b] p-4 text-white">
+                                                <h3 className="font-black text-base uppercase tracking-widest flex items-center"><span className="bg-white text-[#f59e0b] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">2</span> CLASIFICACIÓN INICIAL</h3>
+                                            </div>
+                                            <div className="p-8">
+                                                <div className="bg-orange-50 border border-orange-200 rounded-2xl p-6 text-center mb-6">
+                                                    <h4 className="text-xl font-black text-orange-900 mb-3">CASO PROBABLE:</h4>
+                                                    <p className="text-base text-orange-800 leading-relaxed">Toda persona que cumpla con la sospecha clínica y antecedente epidemiológico.</p>
                                                 </div>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {activeTab === 'acciones' && (
-                            <div className="space-y-12 pb-24">
-                                {/* Tabla Epidemiología Detallada */}
-                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden">
-                                    <div className="bg-slate-800 p-5 flex items-center space-x-3 text-white">
-                                        <i data-lucide="activity" className="text-orange-400"></i>
-                                        <h2 className="font-black uppercase tracking-widest text-sm italic">Componente: Vigilancia Epidemiológica</h2>
-                                    </div>
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-left text-[11px] border-collapse">
-                                            <thead>
-                                                <tr className="bg-slate-50 border-b-2 border-slate-100">
-                                                    <th className="p-4 font-black text-slate-400 uppercase">Línea de Acción</th>
-                                                    <th className="p-4 font-black text-slate-400 uppercase">Actividad Programática</th>
-                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-700 uppercase text-center">{s.name}</th>)}
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-slate-50">
-                                                {epidemiologyActions.map((row, i) => (
-                                                    <tr key={i} className="hover:bg-slate-50/50">
-                                                        <td className="p-4 font-black text-slate-500 uppercase italic border-r">{row.action}</td>
-                                                        <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
-                                                        {['s1', 's2', 's3', 's4'].map(st => (
-                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-900 bg-red-50/30 italic' : 'text-slate-600'}`}>{row[st]}</td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {/* Tabla Vectores Detallada */}
-                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden border-slate-100">
-                                    <div className="bg-[#0f766e] p-5 flex items-center space-x-3 text-white">
-                                        <i data-lucide="users"></i>
-                                        <h2 className="font-black uppercase tracking-widest text-sm italic">COMPONENTE: VECTORES</h2>
-                                    </div>
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-left text-[11px] border-collapse">
-                                            <thead>
-                                                <tr className="bg-white border-b border-slate-100">
-                                                    <th className="p-4 font-black text-slate-500 uppercase">Línea</th>
-                                                    <th className="p-4 font-black text-slate-500 uppercase">Actividad Programática Completa</th>
-                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-500 uppercase text-center">{s.name}</th>)}
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-slate-50">
-                                                {vectorActions.map((row, i) => (
-                                                    <tr key={i} className="hover:bg-slate-50/50">
-                                                        <td className="p-4 font-bold text-slate-400 uppercase italic border-r">{row.category}</td>
-                                                        <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
-                                                        {['s1', 's2', 's3', 's4'].map(st => (
-                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-800' : (row[st] === 'No aplica' ? 'text-slate-400 italic' : 'text-slate-600')}`}>
-                                                                {row[st]}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {/* Tabla Promoción Detallada (9 Actividades) */}
-                                <div className="bg-white rounded-[2rem] border-2 shadow-sm overflow-hidden border-teal-100">
-                                    <div className="bg-teal-700 p-5 flex items-center space-x-3 text-white">
-                                        <i data-lucide="users" className="text-teal-300"></i>
-                                        <h2 className="font-black uppercase tracking-widest text-sm italic">Componente: Promoción de la Salud</h2>
-                                    </div>
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-left text-[11px] border-collapse">
-                                            <thead>
-                                                <tr className="bg-teal-50 border-b-2 border-teal-100">
-                                                    <th className="p-4 font-black text-teal-800/50 uppercase">Línea</th>
-                                                    <th className="p-4 font-black text-teal-800/50 uppercase">Actividad Programática Completa</th>
-                                                    {STRATA.map(s => <th key={s.id} className="p-4 font-black text-slate-700 uppercase text-center">{s.name}</th>)}
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-teal-50">
-                                                {promotionActions.map((row, i) => (
-                                                    <tr key={i} className="hover:bg-teal-50/50">
-                                                        <td className="p-4 font-black text-teal-900/40 uppercase italic border-r">{row.line}</td>
-                                                        <td className="p-4 text-slate-800 font-bold border-r">{row.activity}</td>
-                                                        {['s1', 's2', 's3', 's4'].map(st => (
-                                                            <td key={st} className={`p-4 text-center ${st === 's4' ? 'font-black text-red-900 bg-red-50/30 italic' : 'text-slate-600'}`}>{row[st]}</td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {activeTab === 'estratos' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in slide-in-from-bottom-4 duration-500">
-                                {STRATA.map((s) => (
-                                    <div key={s.id} className={`p-8 rounded-3xl border-2 transition-all ${s.color}`}>
-                                        <div className="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center font-black text-xl mb-6">{s.id}</div>
-                                        <h3 className="text-xl font-black mb-3 uppercase italic leading-tight">{s.description}</h3>
-                                        <p className="text-xs font-bold leading-relaxed opacity-80">{s.detail}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-
-                        {activeTab === 'tratamiento' && (
-                            <div className="space-y-6 animate-in fade-in duration-500">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="bg-white p-8 rounded-3xl border-2 border-blue-100 shadow-sm relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-4 opacity-5 text-blue-600"><i data-lucide="shield" className="lucide-lg"></i></div>
-                                        <h3 className="text-xl font-black text-blue-800 uppercase italic mb-4">Tratamiento de Cura Radical (TCR)</h3>
-                                        <div className="space-y-4 text-sm text-slate-700">
-                                            <p className="font-bold flex items-center text-blue-600"><i data-lucide="check-circle-2" className="mr-2"></i> Cloroquina + Primaquina</p>
-                                            <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
-                                                <p className="font-black text-blue-900 mb-1">Esquema 14 días:</p>
-                                                <p>Pacientes en entidades federativas con <span className="font-bold uppercase tracking-tighter">baja o nula transmisión</span>.</p>
+                                                <div className="bg-[#fef3c7] border border-[#fcd34d] rounded-2xl p-5 text-center font-black text-orange-900 text-lg shadow-inner">
+                                                    Evaluar signos de alarma o gravedad
+                                                </div>
                                             </div>
-                                            <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
-                                                <p className="font-black text-blue-900 mb-1">Esquema 7 días:</p>
-                                                <p>Pacientes en entidades federativas donde <span className="font-bold uppercase tracking-tighter">continúa la endemicidad</span>.</p>
-                                            </div>
-                                            <p className="text-[10px] text-slate-400 italic uppercase">Para casos autóctonos causados por Plasmodium vivax y Plasmodium ovale.</p>
                                         </div>
                                     </div>
 
-                                    <div className="bg-white p-8 rounded-3xl border-2 border-orange-100 shadow-sm relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-4 opacity-5 text-orange-600"><i data-lucide="activity" className="lucide-lg"></i></div>
-                                        <h3 className="text-xl font-black text-orange-800 uppercase italic mb-4">Tratamiento Plasmodium Falciparum y Grave</h3>
-                                        <div className="space-y-4 text-sm text-slate-700">
-                                            <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
-                                                <p className="font-black text-orange-900 mb-1">Plasmodium falciparum (Coartem):</p>
-                                                <p>Composición a dosis fija de <span className="font-bold">Artemeter con Lumefantrina</span>.</p>
+                                    {/* Flecha de conexión para escritorio (Hacia paso 3) */}
+                                    <div className="hidden lg:flex flex-col justify-center items-center px-4">
+                                        <div className="bg-green-100 text-green-800 font-black px-4 py-2 rounded-full text-sm shadow-sm mb-4">¿SÍ?</div>
+                                        <i data-lucide="arrow-right" className="text-slate-400 w-12 h-12"></i>
+                                    </div>
+                                    
+                                    <div className="flex lg:hidden justify-center py-4">
+                                        <div className="flex flex-col items-center">
+                                            <div className="bg-green-100 text-green-800 font-black px-4 py-2 rounded-full text-sm shadow-sm mb-3 flex items-center"><span className="mr-2">SÍ PRESENTA SIGNOS DE ALARMA</span></div>
+                                            <i data-lucide="arrow-down" className="text-slate-400 w-8 h-8"></i>
+                                        </div>
+                                    </div>
+
+                                    {/* 3. Evaluar Signos de Alarma: Columna Derecha */}
+                                    <div className="flex flex-col">
+                                        <div className="bg-white rounded-3xl border-2 border-red-300 shadow-xl overflow-hidden w-full flex flex-col transform hover:scale-[1.02] transition-transform h-full">
+                                            <div className="bg-[#dc2626] p-4 text-white text-center">
+                                                <h3 className="font-black text-base uppercase tracking-widest flex items-center justify-center"><span className="bg-white text-[#dc2626] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">3</span> EVALUAR SIGNOS DE ALARMA</h3>
                                             </div>
-                                            <div className="p-4 bg-red-50 rounded-2xl border border-red-100">
-                                                <p className="font-black text-red-900 mb-1">Paludismo Grave:</p>
-                                                <p className="mb-2">Requiere tratamiento en <span className="font-black text-red-600">NIVEL HOSPITALARIO</span>.</p>
-                                                <p>Manejo inicial con <span className="font-bold uppercase">Artesunato</span> y continuación con 3 días de Coartem.</p>
+                                            <div className="p-8 flex-1 flex flex-col justify-between">
+                                                <div>
+                                                    <p className="font-black text-red-700 text-base mb-6 border-b border-red-100 pb-2">SI PRESENTA CUALQUIERA:</p>
+                                                    <ul className="space-y-4 text-base text-slate-800 font-bold mb-8">
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Alteración del estado de conciencia</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Convulsiones</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Dificultad respiratoria</li>
+                                                        <li className="flex items-start leading-snug"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Choque (llenado capilar {'>'} 2 seg, hipotensión)</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Hemorragias</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Ictericia</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Hemoglobinuria (orina oscura)</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Anemia grave</li>
+                                                        <li className="flex items-start"><i data-lucide="alert-triangle" className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i> Embarazo con fiebre</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="bg-red-600 text-white p-5 rounded-2xl text-center shadow-md">
+                                                    <p className="font-black text-base uppercase leading-tight mb-2">MANEJO INMEDIATO Y REFERENCIA A 2DO NIVEL DE ATENCIÓN</p>
+                                                    <p className="text-sm font-bold text-red-100 tracking-wide">(tomar muestra antes de traslado)</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-800 p-8 rounded-3xl text-white shadow-xl">
-                                    <div className="flex items-center space-x-3 mb-4">
-                                        <i data-lucide="alert-circle" className="text-orange-400"></i>
-                                        <h3 className="text-lg font-black uppercase italic tracking-widest">Seguimiento Hemático</h3>
+                                {/* Flecha de Paso 2 a Paso 4 */}
+                                <div className="flex justify-center py-6">
+                                    <div className="flex flex-col items-center">
+                                        <div className="bg-slate-800 text-white font-black px-6 py-2 rounded-full text-sm shadow-sm flex items-center mb-3">NO PRESENTA SIGNOS GRAVES</div>
+                                        <i data-lucide="arrow-down" className="text-slate-400 w-10 h-10"></i>
                                     </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
-                                        <div className="space-y-2 opacity-90">
-                                            <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium vivax:</p>
-                                            <p className="leading-relaxed">Muestreo a los <span className="text-white font-black">7, 14, 21 y 28 días</span> a partir del término del tratamiento, y posteriormente <span className="text-white font-black">mensual por un año</span>.</p>
+                                </div>
+
+                                {/* 4. Decisión Diagnóstica */}
+                                <div className="bg-white rounded-3xl border-2 border-blue-200 shadow-sm overflow-hidden">
+                                    <div className="bg-[#1d4ed8] p-4 text-white">
+                                        <h3 className="font-black text-base uppercase tracking-widest flex items-center"><span className="bg-white text-[#1d4ed8] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">4</span> DECISIÓN DIAGNÓSTICA</h3>
+                                    </div>
+                                    <div className="p-8 md:p-10 flex flex-col md:flex-row items-center gap-10">
+                                        <div className="flex-shrink-0 text-blue-600 bg-blue-50 p-6 rounded-full">
+                                            <i data-lucide="microscope" className="w-20 h-20 opacity-80"></i>
                                         </div>
-                                        <div className="space-y-2 opacity-90">
-                                            <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium falciparum:</p>
-                                            <p className="leading-relaxed text-balance italic">Toma de muestra previa a la administración de cada dosis de medicamento para asegurar la eliminación de la carga parasitaria.</p>
+                                        <div className="flex-1 text-center md:text-left">
+                                            <p className="text-xl text-blue-900 font-medium leading-relaxed">
+                                                Realizar prueba parasitológica <br/>
+                                                <span className="font-black text-2xl tracking-tight text-blue-700"> (GOTA GRUESA Y EXTENDIDO DELGADO) </span> <br/>
+                                                a todas las personas con caso probable, sin importar tiempo de fiebre o uso previo de antipalúdicos.
+                                            </p>
+                                        </div>
+                                        <div className="w-full md:w-[400px] bg-blue-50 border border-blue-200 rounded-2xl p-6">
+                                            <p className="font-black text-blue-900 text-base mb-4 border-b border-blue-200 pb-2">PRIORIDAD:</p>
+                                            <ul className="space-y-4 text-base text-blue-800 font-bold">
+                                                <li className="flex items-start"><i data-lucide="chevron-right" className="w-5 h-5 mt-0.5 text-blue-500 flex-shrink-0 mr-2"></i> Toda persona con fiebre procedente de zona de transmisión</li>
+                                                <li className="flex items-start"><i data-lucide="chevron-right" className="w-5 h-5 mt-0.5 text-blue-500 flex-shrink-0 mr-2"></i> Toda persona con fiebre sin otra causa aparente</li>
+                                                <li className="flex items-start"><i data-lucide="chevron-right" className="w-5 h-5 mt-0.5 text-blue-500 flex-shrink-0 mr-2"></i> Contactos de casos confirmados (búsqueda activa)</li>
+                                            </ul>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="flex justify-center py-6">
+                                    <div className="bg-slate-100 rounded-full p-2 border-2 border-slate-200">
+                                        <i data-lucide="arrow-down" className="text-slate-400 w-8 h-8"></i>
+                                    </div>
+                                </div>
+
+                                {/* 5. Toma Adecuada de Muestras */}
+                                <div className="bg-white rounded-3xl border-2 border-purple-200 shadow-sm overflow-hidden">
+                                    <div className="bg-[#7e22ce] p-4 text-white">
+                                        <h3 className="font-black text-base uppercase tracking-widest flex items-center"><span className="bg-white text-[#7e22ce] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">5</span> TOMA ADECUADA DE MUESTRAS</h3>
+                                    </div>
+                                    <div className="p-8 md:p-10">
+                                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                            <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4">
+                                                <div className="bg-white p-3 rounded-full shadow-sm flex-shrink-0"><i data-lucide="droplet" className="w-10 h-10 text-red-500 fill-red-500"></i></div>
+                                                <div>
+                                                    <p className="font-black text-purple-900 text-lg mb-2">a) GOTA GRUESA</p>
+                                                    <p className="text-base text-slate-700 leading-relaxed">1 gota grande (≈ 50 µL) de sangre capilar o venosa en el centro del portaobjetos.</p>
+                                                </div>
+                                            </div>
+                                            <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4">
+                                                <div className="bg-white p-3 rounded-2xl shadow-sm border border-slate-200 flex space-x-1 flex-shrink-0 mt-1">
+                                                    <div className="w-10 h-4 bg-red-100 rounded-sm overflow-hidden relative"><div className="absolute left-0 top-0 bottom-0 w-3 bg-red-400"></div></div>
+                                                </div>
+                                                <div>
+                                                    <p className="font-black text-purple-900 text-lg mb-2">b) EXTENDIDO DELGADO</p>
+                                                    <p className="text-base text-slate-700 leading-relaxed">1 gota pequeña (≈ 5 µL) cerca de un extremo y extender formando un frotis con borde liso y cola.</p>
+                                                </div>
+                                            </div>
+                                            <div className="bg-[#f3e8ff] p-6 rounded-2xl border border-[#d8b4fe]">
+                                                <p className="font-black text-purple-900 text-lg mb-4 border-b border-purple-200 pb-2">Consideraciones:</p>
+                                                <ul className="space-y-4 text-base text-purple-800 font-medium">
+                                                    <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-purple-500 mt-2 mr-3 flex-shrink-0"></div>Usar lanceta estéril y alcohol al 70%.</li>
+                                                    <li className="flex items-start"><div className="w-2 h-2 rounded-full bg-purple-500 mt-2 mr-3 flex-shrink-0"></div>Dejar secar al aire en posición horizontal.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-center py-6">
+                                    <div className="bg-slate-100 rounded-full p-2 border-2 border-slate-200">
+                                        <i data-lucide="arrow-down" className="text-slate-400 w-8 h-8"></i>
+                                    </div>
+                                </div>
+
+                                {/* 6 y 7. Manejo Inicial y Notificación */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                                    {/* 6. Manejo Inicial */}
+                                    <div className="bg-white rounded-3xl border-2 border-teal-200 shadow-sm overflow-hidden flex flex-col">
+                                        <div className="bg-[#0f766e] p-4 text-white">
+                                            <h3 className="font-black text-base uppercase tracking-widest flex items-center"><span className="bg-white text-[#0f766e] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">6</span> MANEJO INICIAL EN LA UNIDAD</h3>
+                                        </div>
+                                        <div className="p-8 flex items-start gap-6 flex-1">
+                                            <div className="bg-teal-50 p-4 rounded-full flex-shrink-0 mt-1">
+                                                <i data-lucide="stethoscope" className="w-12 h-12 text-teal-600"></i>
+                                            </div>
+                                            <ul className="space-y-4 text-base text-slate-700">
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div><span><span className="font-black text-slate-900">No iniciar tratamiento antipalúdico</span> hasta confirmar diagnóstico, salvo en casos graves donde se inicie manejo y referencia.</span></li>
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div>Brindar tratamiento sintomático (antitérmico, hidratación).</li>
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div>Explicar al paciente la importancia del diagnóstico y seguimiento.</li>
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div>Indicar que regrese por resultado.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* 7. Notificación */}
+                                    <div className="bg-white rounded-3xl border-2 border-teal-200 shadow-sm overflow-hidden flex flex-col">
+                                        <div className="bg-[#0f766e] p-4 text-white">
+                                            <h3 className="font-black text-base uppercase tracking-widest flex items-center"><span className="bg-white text-[#0f766e] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">7</span> NOTIFICACIÓN EPIDEMIOLÓGICA</h3>
+                                        </div>
+                                        <div className="p-8 flex items-start gap-6 flex-1">
+                                            <div className="bg-teal-50 p-4 rounded-full flex-shrink-0 mt-1">
+                                                <i data-lucide="clipboard-list" className="w-12 h-12 text-teal-600"></i>
+                                            </div>
+                                            <ul className="space-y-4 text-base text-slate-700">
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div><span>Notificar todo caso probable al departamento de vigilancia epidemiológica de manera <span className="font-black text-teal-800">inmediata (&lt;24 horas)</span>.</span></li>
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div>Llenar el estudio epidemiológico de enfermedades transmitidas por vector.</li>
+                                                <li className="flex items-start leading-relaxed"><div className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 flex-shrink-0"></div><span>Llenar el <span className="font-black text-teal-800">formato N1</span> registrando datos completos: nombre, fecha de nacimiento, edad, dirección, teléfono, localidad, fechas de viajes, etc.</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-center py-6">
+                                    <div className="bg-slate-100 rounded-full p-2 border-2 border-slate-200">
+                                        <i data-lucide="arrow-down" className="text-slate-400 w-8 h-8"></i>
+                                    </div>
+                                </div>
+
+                                {/* 8. Conservación y Envío */}
+                                <div className="bg-white rounded-3xl border-2 border-orange-200 shadow-sm overflow-hidden">
+                                    <div className="bg-[#ea580c] p-4 text-white">
+                                        <h3 className="font-black text-base uppercase tracking-widest flex items-center justify-center"><span className="bg-white text-[#ea580c] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">8</span> CONSERVACIÓN Y ENVÍO DE MUESTRAS AL LABORATORIO</h3>
+                                    </div>
+                                    <div className="p-8">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                                            <div className="flex flex-col items-center bg-orange-50/50 p-6 rounded-2xl border border-orange-100">
+                                                <p className="font-black text-orange-900 mb-4 text-lg border-b border-orange-200 pb-2 w-full">1. Secado</p>
+                                                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 text-orange-500 shadow-sm border border-orange-100"><i data-lucide="wind" className="w-10 h-10"></i></div>
+                                                <p className="text-sm text-slate-700 leading-relaxed font-medium">Asegurar que los portaobjetos estén completamente secos al aire.</p>
+                                            </div>
+                                            <div className="flex flex-col items-center bg-orange-50/50 p-6 rounded-2xl border border-orange-100">
+                                                <p className="font-black text-orange-900 mb-4 text-lg border-b border-orange-200 pb-2 w-full">2. Protección</p>
+                                                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 text-orange-500 shadow-sm border border-orange-100"><i data-lucide="mail" className="w-10 h-10"></i></div>
+                                                <p className="text-sm text-slate-700 leading-relaxed font-medium">Colocar cada portaobjetos envuelto en el Formato N1 y enviar con el estudio epidemiológico.</p>
+                                            </div>
+                                            <div className="flex flex-col items-center bg-orange-50/50 p-6 rounded-2xl border border-orange-100">
+                                                <p className="font-black text-orange-900 mb-4 text-lg border-b border-orange-200 pb-2 w-full">3. Envío</p>
+                                                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 text-orange-500 shadow-sm border border-orange-100"><i data-lucide="truck" className="w-10 h-10"></i></div>
+                                                <p className="text-sm text-slate-700 leading-relaxed font-medium">Enviar al laboratorio de la jurisdicción / estatal lo antes posible (idealmente &lt; 24 h). No exponer a calor extremo ni humedad.</p>
+                                            </div>
+                                            <div className="flex flex-col items-center bg-orange-50/50 p-6 rounded-2xl border border-orange-100">
+                                                <p className="font-black text-orange-900 mb-4 text-lg border-b border-orange-200 pb-2 w-full">4. Recepción en laboratorio</p>
+                                                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 text-orange-500 shadow-sm border border-orange-100"><i data-lucide="microscope" className="w-10 h-10"></i></div>
+                                                <p className="text-sm text-slate-700 leading-relaxed font-medium">El laboratorio confirmará la recepción y realizará procesamiento.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-center py-6">
+                                    <div className="bg-slate-100 rounded-full p-2 border-2 border-slate-200">
+                                        <i data-lucide="arrow-down" className="text-slate-400 w-8 h-8"></i>
+                                    </div>
+                                </div>
+
+                                {/* 9. Interpretación de Resultados */}
+                                <div className="bg-white rounded-3xl border-2 border-[#1e3a8a] shadow-sm overflow-hidden mb-12">
+                                    <div className="bg-[#1e3a8a] p-4 text-white">
+                                        <h3 className="font-black text-base uppercase tracking-widest flex items-center justify-center"><span className="bg-white text-[#1e3a8a] w-8 h-8 rounded-full inline-flex items-center justify-center mr-3">9</span> INTERPRETACIÓN DE RESULTADOS (LABORATORIO)</h3>
+                                    </div>
+                                    <div className="p-0 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                                        <div className="p-8 flex flex-col bg-green-50/30">
+                                            <h4 className="text-center font-black text-green-700 uppercase mb-6 text-xl tracking-widest">POSITIVO</h4>
+                                            <div className="flex items-start space-x-4">
+                                                <i data-lucide="check-circle-2" className="w-12 h-12 text-green-500 flex-shrink-0 mt-1"></i>
+                                                <ul className="space-y-4 text-sm text-slate-700 font-medium leading-relaxed">
+                                                    <li>• Reportar especie (<i className="italic">P. vivax, P. falciparum, P. malariae, P. ovale</i>) y densidad parasitaria.</li>
+                                                    <li>• Notificar inmediatamente como <span className="font-black text-green-800 bg-green-100 px-2 py-1 rounded">CASO CONFIRMADO</span>.</li>
+                                                    <li>• Iniciar/continuar tratamiento específico según Norma Oficial Mexicana y guías vigentes.</li>
+                                                     <li>• Personal del Programa de Vectores proporcionara el tratamiento.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div className="p-8 flex flex-col bg-amber-50/30">
+                                            <h4 className="text-center font-black text-amber-600 uppercase mb-6 text-xl tracking-widest">NEGATIVO</h4>
+                                            <div className="flex items-center justify-center space-x-4 mt-6">
+                                                <i data-lucide="minus-circle" className="w-12 h-12 text-amber-500 flex-shrink-0"></i>
+                                                <p className="text-base text-slate-700 font-bold leading-relaxed">• Buscar otros diagnósticos diferenciales.</p>
+                                            </div>
+                                        </div>
+                                        <div className="p-8 flex flex-col bg-slate-50/50">
+                                            <h4 className="text-center font-black text-slate-600 uppercase mb-6 text-xl tracking-widest">NO CONCLUYENTE / INADECUADA</h4>
+                                            <div className="flex items-center justify-center space-x-4 mt-6">
+                                                <i data-lucide="help-circle" className="w-12 h-12 text-slate-400 flex-shrink-0"></i>
+                                                <p className="text-base text-slate-700 font-bold leading-relaxed">• Repetir toma de muestra lo antes posible y reenviar al laboratorio.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* FOOTER DEL ALGORITMO */}
+                                <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm mb-8">
+                                    <div className="border-b md:border-b-0 md:border-r border-slate-200 pb-6 md:pb-0 md:pr-6">
+                                        <h5 className="font-black text-slate-800 mb-4 flex items-center text-base"><i data-lucide="clipboard-list" className="w-5 h-5 mr-2 text-slate-500"></i> NOTAS IMPORTANTES</h5>
+                                        <ul className="space-y-2 text-slate-600 leading-relaxed font-medium">
+                                            <li>• La gota gruesa es más sensible; el extendido permite identificar especie.</li>
+                                            <li>• La calidad de la muestra es clave para el diagnóstico.</li>
+                                            <li>• La oportunidad en la toma, envío y notificación fortalece la vigilancia.</li>
+                                            <li>• Todo el personal debe utilizar precauciones universales.</li>
+                                        </ul>
+                                    </div>
+                                    <div className="border-b md:border-b-0 md:border-r border-slate-200 pb-6 md:pb-0 md:px-6">
+                                        <h5 className="font-black text-slate-800 mb-4 text-base">ABREVIATURAS</h5>
+                                        <ul className="space-y-3 text-slate-600 leading-relaxed">
+                                            <li><span className="font-black text-slate-800 bg-slate-100 px-2 py-0.5 rounded">µL:</span> microlitro</li>
+                                            <li><span className="font-black text-slate-800 bg-slate-100 px-2 py-0.5 rounded">h:</span> hora(s)</li>
+                                            <li><span className="font-black text-slate-800 bg-slate-100 px-2 py-0.5 rounded">SUIVE:</span> Sistema Único de Información para la Vigilancia Epidemiológica</li>
+                                            <li><span className="font-black text-slate-800 bg-slate-100 px-2 py-0.5 rounded">SINAVE:</span> Sistema Nacional de Vigilancia Epidemiológica</li>
+                                        </ul>
+                                    </div>
+                                    <div className="md:pl-6">
+                                        <h5 className="font-black text-slate-800 mb-2 text-base">ZONAS ENDÉMICAS EN MÉXICO</h5>
+                                        <p className="text-slate-500 mb-4 font-bold text-xs uppercase tracking-widest">(Transmisión de paludismo)</p>
+                                        <ul className="grid grid-cols-2 gap-y-3 gap-x-4 text-slate-700 font-bold list-disc list-inside bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                            <li>Chiapas</li>
+                                            <li>Oaxaca</li>
+                                            <li>Tabasco</li>
+                                            <li>Sinaloa</li>
+                                            <li>Campeche</li>
+                                            <li>Chihuahua</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                {/* Banner de Alerta Final */}
+                                <div className="bg-green-700 text-white p-6 rounded-3xl shadow-lg flex items-center justify-center space-x-4 text-center mt-6">
+                                    <i data-lucide="alert-triangle" className="w-8 h-8 flex-shrink-0 text-green-300"></i>
+                                    <p className="font-black text-base md:text-xl uppercase tracking-widest leading-relaxed">
+                                        ANTE FIEBRE EN PERSONA PROCEDENTE DE ZONA ENDÉMICA: <br className="hidden md:block"/> ¡PIENSA EN PALUDISMO, CONFIRMA Y NOTIFICA!
+                                    </p>
                                 </div>
                             </div>
                         )}

@@ -28,6 +28,11 @@
             width: 80px;
             height: 80px;
         }
+        /* Sangría francesa para formato APA */
+        .apa-reference {
+            padding-left: 2rem;
+            text-indent: -2rem;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -122,8 +127,75 @@
                 { species: "P. malariae", period: "18-40 días (≥18 días)", notes: "Puede persistir años a décadas sin recaída verdadera (parasitemia de bajo grado)" }
             ];
 
+            const bibliographyData = [
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2020",
+                    titulo: "Manual para la distribución y uso de mosquiteros impregnados con insecticidas de larga duración (MTILD) para reducir el contacto vector-humano",
+                    edicion: "3.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2020",
+                    titulo: "Manual para la implementación de la estrategia de eliminación y modificación de hábitats y criaderos de anofelinos",
+                    edicion: "3.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2020",
+                    titulo: "Manual técnico de entomología para el programa de paludismo",
+                    edicion: null,
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2020",
+                    titulo: "Manual técnico para el control de anopheles adultos en refugios naturales para paludismo",
+                    edicion: "3.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2020",
+                    titulo: "Manual técnico para la aplicación de larvicidas en el programa de paludismo",
+                    edicion: "3.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2020",
+                    titulo: "Manual técnico para la aplicación de rociado residual en paludismo",
+                    edicion: "3.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2022",
+                    titulo: "Guía de acciones de promoción de la salud para la eliminación del paludismo en México",
+                    edicion: "Versión 1.0",
+                    editorial: "Dirección General de Promoción de la Salud."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2022",
+                    titulo: "Manual de tratamientos médicos para la atención de casos confirmados de paludismo en México",
+                    edicion: "3.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                },
+                {
+                    autor: "Secretaría de Salud.",
+                    anio: "2023",
+                    titulo: "Guía de lineamientos operativos en el proceso de eliminación del paludismo en México",
+                    edicion: "1.ª ed.",
+                    editorial: "Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE)."
+                }
+            ];
+
             return (
                 <div className="min-h-screen text-slate-900 font-sans p-4 md:p-8">
+                    {}
                     <header className="max-w-7xl mx-auto mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div className="flex items-center space-x-4">
                             <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-2xl shadow-lg border-2 border-orange-400">NL</div>
@@ -166,6 +238,10 @@
                             </button>
                             <button onClick={() => setActiveTab('tratamiento')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'tratamiento' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
                                 <i data-lucide="heart" className="mr-2"></i> Tratamiento
+                            </button>
+                            {/* NUEVA PESTAÑA: Bibliografía */}
+                            <button onClick={() => setActiveTab('bibliografia')} className={`flex-1 min-w-[140px] flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider ${activeTab === 'bibliografia' ? 'bg-white shadow-md text-orange-600' : 'text-slate-500 hover:text-slate-700'}`}>
+                                <i data-lucide="book-marked" className="mr-2"></i> Bibliografía
                             </button>
                         </nav>
 
@@ -228,8 +304,7 @@
                                     </div>
                                 </div>
 
-                                { }
-                                {/* NUEVA SECCIÓN: Clasificación de Casos (Añadida según solicitud) */}
+                                {/* Clasificación de Casos */}
                                 <div className="bg-white p-8 md:p-10 rounded-3xl border-2 shadow-sm mt-8 border-indigo-100">
                                     <div className="flex items-center space-x-3 mb-8 text-indigo-600">
                                         <i data-lucide="book-open" className="w-8 h-8"></i>
@@ -323,8 +398,7 @@
                                     </div>
                                 </div>
 
-                                {}
-                                {/* SECCIÓN: Foco Palúdico */}
+                                {/* Foco Palúdico */}
                                 <div className="bg-white p-8 rounded-3xl border-2 shadow-sm">
                                     <div className="flex items-center space-x-3 mb-6 text-orange-600">
                                         <i data-lucide="target" className="w-6 h-6"></i>
@@ -374,7 +448,7 @@
                                     </div>
                                 </div>
 
-                                {/* SECCIÓN: Modalidades de Búsqueda */}
+                                {/* Modalidades de Búsqueda */}
                                 <div className="bg-white p-8 rounded-3xl border-2 shadow-sm mt-8">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                                         <div className="flex items-center space-x-3 text-indigo-600">
@@ -825,7 +899,6 @@
                         {}
                         {activeTab === 'estratos' && (
                             <div className="space-y-8 animate-in slide-in-from-bottom-4 duration-500">
-                                {/* Nuevo botón de redirección */}
                                 <div className="flex justify-center mb-6">
                                     <a
                                         href="https://mary-9320.github.io/PALUDISMO.NL-/"
@@ -840,7 +913,6 @@
                                     </a>
                                 </div>
 
-                                {/* Cuadrícula de estratos existente */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                     {STRATA.map((s) => (
                                         <div key={s.id} className={`p-8 rounded-3xl border-2 transition-all ${s.color}`}>
@@ -1265,7 +1337,7 @@
                                             <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium falciparum:</p>
                                             <p className="leading-relaxed ">Cada 6 horas antes  de la administración del medicamento y en los dias  <span className="text-white font-black"> 7, 14, 21 y 28 </span> .</p>
                                         </div>
- <div className="space-y-2 opacity-90">
+                                        <div className="space-y-2 opacity-90">
                                             <p className="font-bold text-orange-400 uppercase tracking-widest">Casos Plasmodium falciparum con complicaciones:</p>
                                             <p className="leading-relaxed ">Toma de gota gruesa antes de cada administración de artesunato, posteriormente cada seis horas y después tomarlas antes de cada administración de Coartem y después cada 12 o 24 horas hasta la curación. .</p>
                                         </div>
@@ -1279,11 +1351,32 @@
                             </div>
                         )}
 
+                        {}
+                        {activeTab === 'bibliografia' && (
+                            <div className="space-y-8 animate-in fade-in duration-500">
+                                <div className="bg-white rounded-3xl border-2 border-slate-200 shadow-sm overflow-hidden p-8 md:p-10">
+                                    <div className="flex items-center space-x-3 mb-8 text-slate-800 border-b-2 border-slate-100 pb-4">
+                                        <i data-lucide="book-marked" className="w-8 h-8 text-orange-600"></i>
+                                        <h2 className="text-2xl font-black uppercase italic tracking-tighter">Bibliografía</h2>
+                                    </div>
+                                    
+                                    <div className="space-y-6 text-slate-700 text-sm md:text-base leading-relaxed">
+                                        {bibliographyData.map((bib, index) => (
+                                            <p key={index} className="apa-reference">
+                                                {bib.autor} ({bib.anio}). <span className="italic">{bib.titulo}</span>{bib.edicion ? ` (${bib.edicion})` : ''}. {bib.editorial}
+                                            </p>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
                         <div className="mt-12 pt-6 border-t border-slate-200 text-center">
                             <p className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Fuente: Guía de Lineamientos Operativos para Paludismo en México</p>
                         </div>
                     </main>
 
+                    {}
                     {/* Modal Períodos de Incubación */}
                     {showIncubationModal && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
@@ -1340,3 +1433,4 @@
     </script>
 </body>
 </html>
+                              

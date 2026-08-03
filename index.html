@@ -274,10 +274,19 @@
                                     <div className="bg-slate-900 p-8 rounded-3xl shadow-xl text-white flex flex-col justify-between">
                                         <div>
                                             <i data-lucide="microscope" className="text-orange-400 mb-4 w-8 h-8"></i>
-                                            <div className="bg-white/5 p-6 rounded-2xl mb-6 border border-white/10 text-center">
-                                                <h3 className="text-2xl font-black text-orange-400 leading-none uppercase mb-1 tracking-tighter">GOTA GRUESA</h3>
-                                                <p className="text-slate-400 text-[10px] font-bold tracking-widest uppercase italic border-t border-white/10 pt-1">Estándar de Oro</p>
-                                            </div>
+                                            <a 
+                                                href="https://drive.google.com/file/d/1qR1RWGfE041hVzyRRi0v306uBrnKy8u5/view?usp=sharing" 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                title="Ver video de Gota Gruesa" 
+                                                className="block bg-white/5 p-6 rounded-2xl mb-6 border border-white/10 text-center hover:bg-white/10 hover:border-orange-500/50 transition-all cursor-pointer group relative shadow-lg hover:shadow-orange-500/20"
+                                            >
+                                                <div className="absolute top-3 right-3 text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <i data-lucide="play-circle" className="w-5 h-5"></i>
+                                                </div>
+                                                <h3 className="text-2xl font-black text-orange-400 leading-none uppercase mb-1 tracking-tighter group-hover:scale-105 transition-transform duration-300">GOTA GRUESA</h3>
+                                                <p className="text-slate-400 text-[10px] font-bold tracking-widest uppercase italic border-t border-white/10 pt-2 mt-2 group-hover:text-slate-300 transition-colors">Estándar de Oro</p>
+                                            </a>
                                         </div>
                                         <p className="text-sm text-slate-300 leading-tight">
                                             <span className="font-black text-orange-400 uppercase tracking-tighter block mb-1">Caso Confirmado:</span> Identificación de <span className="italic text-white">Plasmodium</span> mediante microscopía o pruebas moleculares.
@@ -1432,5 +1441,4 @@
         root.render(<App />);
     </script>
 </body>
-</html>
-                              
+</html>                      

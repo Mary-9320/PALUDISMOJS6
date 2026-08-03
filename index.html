@@ -219,7 +219,96 @@
                                     </div>
                                 </div>
 
-                                {/* NUEVA SECCIÓN: Foco Palúdico */}
+                                { }
+                                {/* NUEVA SECCIÓN: Clasificación de Casos (Añadida según solicitud) */}
+                                <div className="bg-white p-8 md:p-10 rounded-3xl border-2 shadow-sm mt-8 border-indigo-100">
+                                    <div className="flex items-center space-x-3 mb-8 text-indigo-600">
+                                        <i data-lucide="book-open" className="w-8 h-8"></i>
+                                        <h2 className="text-2xl font-black uppercase italic tracking-tighter bg-indigo-50 text-indigo-800 px-4 py-1.5 rounded-xl border border-indigo-100 shadow-sm">Clasificación Epidemiológica de Casos</h2>
+                                    </div>
+                                    
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                        {/* Caso Probable */}
+                                        <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-slate-300">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-100 text-slate-500"><i data-lucide="user-search" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-slate-800 text-lg uppercase tracking-tight">Caso Probable</h3>
+                                            </div>
+                                            <p className="text-sm text-slate-600 leading-relaxed">
+                                                Es cualquier persona con sospecha de la enfermedad (febril) que debe ser diagnosticada mediante microscopía o Prueba de Diagnóstico Rápido (PDR) dentro de las <span className="font-bold text-slate-800">primeras 48 horas</span> desde el inicio de los síntomas.
+                                            </p>
+                                        </div>
+
+                                        {/* Caso Confirmado */}
+                                        <div className="bg-emerald-50/50 border border-emerald-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-emerald-300">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-emerald-100 text-emerald-600"><i data-lucide="check-circle" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-emerald-900 text-lg uppercase tracking-tight">Caso Confirmado</h3>
+                                            </div>
+                                            <p className="text-sm text-emerald-800/80 leading-relaxed">
+                                                Es aquel caso de paludismo o infección palúdica en el que ya se ha <span className="font-bold">detectado y comprobado la presencia del parásito</span> mediante una prueba de diagnóstico, ya sea por microscopía, PDR o prueba molecular.
+                                            </p>
+                                        </div>
+
+                                        {/* Caso Autóctono */}
+                                        <div className="bg-teal-50/50 border border-teal-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-teal-300">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-teal-100 text-teal-600"><i data-lucide="map-pin-home" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-teal-900 text-lg uppercase tracking-tight">Caso Autóctono</h3>
+                                            </div>
+                                            <p className="text-sm text-teal-800/80 leading-relaxed">
+                                                Infección contraída localmente en el área donde se diagnostica, sin indicios de ser importada. <span className="italic text-teal-900/70 text-xs block mt-2">Nota: Contagios secundarios de un caso importado (tras el 2do periodo de incubación) se consideran autóctonos.</span>
+                                            </p>
+                                        </div>
+
+                                        {/* Caso Importado */}
+                                        <div className="bg-sky-50/50 border border-sky-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-sky-300">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-sky-100 text-sky-600"><i data-lucide="plane-landing" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-sky-900 text-lg uppercase tracking-tight">Caso Importado</h3>
+                                            </div>
+                                            <p className="text-sm text-sky-800/80 leading-relaxed">
+                                                Es aquel en el que la infección o los parásitos se <span className="font-bold">contrajeron fuera de la zona geográfica</span> en la que se está diagnosticando actualmente.
+                                            </p>
+                                        </div>
+
+                                        {/* Caso Introducido */}
+                                        <div className="bg-purple-50/50 border border-purple-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-purple-300">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-purple-100 text-purple-600"><i data-lucide="arrow-right-left" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-purple-900 text-lg uppercase tracking-tight">Caso Introducido</h3>
+                                            </div>
+                                            <p className="text-sm text-purple-800/80 leading-relaxed">
+                                                Contagios locales que derivan epidemiológicamente y de manera directa de un caso importado, ocurriendo <span className="font-bold">hasta el límite de un segundo periodo de incubación</span>.
+                                            </p>
+                                        </div>
+
+                                        {/* Recaída */}
+                                        <div className="bg-orange-50/50 border border-orange-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-orange-300">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-orange-100 text-orange-600"><i data-lucide="history" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-orange-900 text-lg uppercase tracking-tight">Recaída</h3>
+                                            </div>
+                                            <p className="text-sm text-orange-800/80 leading-relaxed">
+                                                Reaparición del ciclo exo-eritrocítico como efecto de los hipnozoitos del <span className="italic font-bold">P. vivax</span>, con o sin sintomatología, que obedecen a una infección primaria anterior; esto ocurre debido a que una etapa latente [hipnozoítos] puede persistir en el hígado y causar recaídas al invadir el torrente sanguíneo de <span className="font-bold">dos meses a 3 años después</span>.
+                                            </p>
+                                        </div>
+
+                                        {/* Recrudescencia */}
+                                        <div className="bg-rose-50/50 border border-rose-200 p-6 rounded-2xl hover:shadow-md transition-shadow hover:border-rose-300 lg:col-span-3">
+                                            <div className="flex items-center space-x-3 mb-3">
+                                                <div className="bg-white p-2 rounded-lg shadow-sm border border-rose-100 text-rose-600"><i data-lucide="activity" className="w-5 h-5"></i></div>
+                                                <h3 className="font-black text-rose-900 text-lg uppercase tracking-tight">Recrudescencia</h3>
+                                            </div>
+                                            <p className="text-sm text-rose-800/80 leading-relaxed md:max-w-3xl">
+                                                "La reaparición de parasitemia <span className="font-bold">a partir del día 7</span>" posterior al tratamiento, la cual "es necesario distinguirla entre una recrudescencia o una nueva infección". Esto se asocia a <span className="font-bold text-rose-900">fallas o fracasos terapéuticos</span> en los que los parásitos en la sangre no son eliminados por completo.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {}
+                                {/* SECCIÓN: Foco Palúdico */}
                                 <div className="bg-white p-8 rounded-3xl border-2 shadow-sm">
                                     <div className="flex items-center space-x-3 mb-6 text-orange-600">
                                         <i data-lucide="target" className="w-6 h-6"></i>
@@ -269,7 +358,7 @@
                                     </div>
                                 </div>
 
-                                {/* NUEVA SECCIÓN: Modalidades de Búsqueda */}
+                                {/* SECCIÓN: Modalidades de Búsqueda */}
                                 <div className="bg-white p-8 rounded-3xl border-2 shadow-sm mt-8">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                                         <div className="flex items-center space-x-3 text-indigo-600">
@@ -1187,3 +1276,4 @@
     </script>
 </body>
 </html>
+
